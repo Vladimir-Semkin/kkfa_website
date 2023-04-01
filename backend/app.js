@@ -10,10 +10,6 @@ const app = express();
 
 const PORT = process.env.PORT || 5000;
 
-const corsOptions = {
-  origin: ['http://localhost:3000'],
-  credentials: true,
-};
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -22,7 +18,7 @@ app.use(session(sessionConfig));
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 
-const indexRoute = require('./routes/index.routes');
+const indexRoute = require('./routes/index.route');
 
 app.use('/', indexRoute);
 
