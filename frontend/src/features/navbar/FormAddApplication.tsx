@@ -15,12 +15,6 @@ import InputLabel from '@mui/material/InputLabel';
 import MultipleSelectPlaceholder from './ChekBoxApplication';
 
 export default function FormAddApplication(): JSX.Element {
-  const [name, setName] = React.useState('');
-
-  const addName: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    setName(e.target.value);
-  };
-  console.log(name);
   return (
     <Box
       component="form"
@@ -30,90 +24,88 @@ export default function FormAddApplication(): JSX.Element {
       noValidate
       autoComplete="off"
     >
-      <div>
-        <TextField
-          onChange={addName}
-          required
-          id="outlined-required"
-          label="Имя"
-        />
+      <TextField
+        required
+        id="outlined-required"
+        label="Имя"
+      />
 
-        <TextField
-          required
-          id="outlined-required"
-          label="Фамилия"
-        />
-        <TextField
-          required
-          id="outlined-required"
-          label="Отчество"
-        />
-        <TextField
-          required
-          id="outlined-required"
-          label="Электронная почта"
-        />
-        <TextField
-          required
-          id="outlined-required"
-          label="Дата рождения"
-        />
-        <TextField
-          required
-          id="outlined-required"
-          label="Город"
-        />
-        <TextField
-          required
-          id="outlined-required"
-          label="Телефон"
-        />
-        <TextField
-          required
-          id="outlined-required"
-          label="Права(серия/номер)"
-        />
+      <TextField
+        required
+        id="outlined-required"
+        label="Фамилия"
+      />
+      <TextField
+        required
+        id="outlined-required"
+        label="Отчество"
+      />
+      <TextField
+        required
+        id="outlined-required"
+        label="Электронная почта"
+      />
+      <TextField
+        required
+        id="outlined-required"
+        label="Дата рождения"
+      />
+      <TextField
+        required
+        id="outlined-required"
+        label="Город"
+      />
+      <TextField
+        required
+        id="outlined-required"
+        label="Телефон"
+      />
+      <TextField
+        required
+        id="outlined-required"
+        label="Права(серия/номер)"
+      />
 
-        <FormControl
-          sx={{ width: 165, marginTop: 1, marginLeft: 1 }}
-          fullWidth
+      <FormControl
+        sx={{ width: 165, marginTop: 1, marginLeft: 1 }}
+        fullWidth
+      >
+        <InputLabel
+          required
+          id="demo-simple-select-label"
         >
-          <InputLabel
-            required
-            id="demo-simple-select-label"
-          >
-            Лицензия РАФ
-          </InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            label="Лицензия РАФ"
-          >
-            <MenuItem value={10}>Да</MenuItem>
-            <MenuItem value={20}>Нет</MenuItem>
-          </Select>
-        </FormControl>
-
-        <FormControl
-          sx={{ width: 180, marginTop: 1, marginLeft: 1 }}
-          fullWidth
+          Лицензия РАФ
+        </InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          label="Лицензия РАФ"
         >
-          <InputLabel
-            required
-            id="demo-simple-select-label"
-          >
-            Мед.заключение
-          </InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            label="Лицензия РАФ"
-          >
-            <MenuItem value={10}>Да</MenuItem>
-            <MenuItem value={20}>Нет</MenuItem>
-          </Select>
-        </FormControl>
-      </div>
+          <MenuItem value={10}>Да</MenuItem>
+          <MenuItem value={20}>Нет</MenuItem>
+        </Select>
+      </FormControl>
+
+      <FormControl
+        sx={{ width: 180, marginTop: 1, marginLeft: 1 }}
+        fullWidth
+      >
+        <InputLabel
+          required
+          id="demo-simple-select-label"
+        >
+          Мед.заключение
+        </InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          label="Лицензия РАФ"
+        >
+          <MenuItem value={10}>Да</MenuItem>
+          <MenuItem value={20}>Нет</MenuItem>
+        </Select>
+      </FormControl>
+
       <div>
         <TextField
           required
