@@ -1,14 +1,14 @@
 import React from 'react';
-import FormAddApplication from '../features/navbar/FormAddApplication';
 import NavBar from '../features/navbar/Navbar';
-
 import './App.css';
+import RegistrationForm from '../features/RegistrationForm';
 
 function App(): JSX.Element {
   return (
     <>
+    
       <NavBar />
-      <FormAddApplication />{' '}
+      <RegistrationForm />
     </>
   );
 }
