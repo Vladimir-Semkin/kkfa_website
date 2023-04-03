@@ -12,12 +12,17 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { RootState, useAppDispatch } from '../../store';
+import { logoutAdmin } from '../../Admin/types/auth.slice';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-function NavBar():JSX.Element {
-
+function NavBar(): JSX.Element {
+  const dispatch = useAppDispatch();
+  const { admin } = useSelector((store: RootState) => store.auth);
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
@@ -26,18 +31,18 @@ function NavBar():JSX.Element {
     null
   );
 
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>):void => {
+  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>): void => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>):void => {
+  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>): void => {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseNavMenu = ():void => {
+  const handleCloseNavMenu = (): void => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = ():void => {
+  const handleCloseUserMenu = (): void => {
     setAnchorElUser(null);
   };
 
@@ -94,15 +99,13 @@ function NavBar():JSX.Element {
               }}
             >
               {pages.map((page) => (
-                <MenuItem
-                  key={page}
-                  onClick={handleCloseNavMenu}
-                >
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
+
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
@@ -122,6 +125,16 @@ function NavBar():JSX.Element {
           >
             LOGO
           </Typography>
+          {'id' in admin && (
+            <>
+              <div style={{ marginRight: '10px' }}>
+                <Link to="/lk">личный кабинет</Link>
+              </div>
+              <div>
+                <Link to="/" onClick={() => dispatch(logoutAdmin())}>выход</Link>
+              </div>
+            </>
+          )}
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
@@ -136,14 +149,8 @@ function NavBar():JSX.Element {
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
-              <IconButton
-                onClick={handleOpenUserMenu}
-                sx={{ p: 0 }}
-              >
-                <Avatar
-                  alt="Remy Sharp"
-                  src="/static/images/avatar/2.jpg"
-                />
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
@@ -163,10 +170,7 @@ function NavBar():JSX.Element {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem
-                  key={setting}
-                  onClick={handleCloseUserMenu}
-                >
+                <MenuItem key={setting} onClick={handleCloseUserMenu}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}

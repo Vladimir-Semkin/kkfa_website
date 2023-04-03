@@ -2,12 +2,14 @@ import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 
 import applicationSlice from './features/Participants/applicationSlice';
+import authSlice from './Admin/types/auth.slice';
 // import adSlice from './features/Ad/adSlice';
 
 const store = configureStore({
   // теперь функция combineReducers не нужна
   reducer: {
     ad: applicationSlice,
+    auth: authSlice
   },
 });
 
