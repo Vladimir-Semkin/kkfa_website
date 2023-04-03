@@ -10,9 +10,8 @@ function ResultList(): JSX.Element {
   const { resultsArr } = useSelector((store: RootState) => store.result);
   const { id } = useParams();
   const resultsArrId = resultsArr.filter(
-    (resultObj) => resultObj['Participant.raceEventId'] === Number(id),
+    (resultObj) => resultObj['Participants.raceEventId'] === Number(id),
   );
-  console.log(resultsArr);
 
   const dispatch = useAppDispatch();
   useEffect(() => {
