@@ -3,7 +3,6 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import type {} from 'redux-thunk/extend-redux';
-
 import style from './RegistrationForm.module.css';
 import { Application } from './Participants/types/types';
 import { addApplication } from './Participants/applicationSlice';
