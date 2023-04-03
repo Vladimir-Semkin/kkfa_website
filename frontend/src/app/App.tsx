@@ -5,7 +5,6 @@ import ResultList from '../features/Result/ResultList';
 import './App.css';
 import Calendar from '../features/Calendar/Calendar';
 import NavBar from '../features/navbar/Navbar';
-import './App.css';
 import RegistrationForm from '../features/RegistrationForm';
 import Document from '../features/documents/Documents';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
