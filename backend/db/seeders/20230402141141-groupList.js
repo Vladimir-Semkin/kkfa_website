@@ -10,6 +10,7 @@ module.exports = {
       { title: 'Sport' },
       { title: 'GT' },
       { title: 'Unlim' },
+      { title: 'Не знаю, участвую в первый раз (в первый раз на данном автомобиле' },
     ];
     const groups = groupsData.map((group) => ({
       ...group,

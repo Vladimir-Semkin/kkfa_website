@@ -7,22 +7,29 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
+
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { RootState, useAppDispatch } from '../../store';
 import { logoutAdmin } from '../../Admin/types/auth.slice';
 
-const pages = ['Products', 'Pricing', 'Blog'];
+import { Link } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+
+
+const pages = ['Фотогалерея', 'Календарь', 'Документы'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function NavBar(): JSX.Element {
+
   const dispatch = useAppDispatch();
   const { admin } = useSelector((store: RootState) => store.auth);
+
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
@@ -45,7 +52,7 @@ function NavBar(): JSX.Element {
   const handleCloseUserMenu = (): void => {
     setAnchorElUser(null);
   };
-
+  const navigate = useNavigate();
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -125,6 +132,7 @@ function NavBar(): JSX.Element {
           >
             LOGO
           </Typography>
+
           {'id' in admin && (
             <>
               <div style={{ marginRight: '10px' }}>
@@ -135,6 +143,9 @@ function NavBar(): JSX.Element {
               </div>
             </>
           )}
+
+          <Button onClick={()=>navigate('/docs')} style={{color: 'white'}}>кнопка</Button>
+
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
@@ -147,12 +158,25 @@ function NavBar(): JSX.Element {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+          {/* <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
+
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
+
+              <IconButton
+                onClick={handleOpenUserMenu}
+                sx={{ p: 0 }}
+              >
+                {/* <Avatar
+                  alt="Remy Sharp"
+                  src="/static/images/avatar/2.jpg"
+                /> */}
+              {/* </IconButton> */}
+            {/* </Tooltip> */}
+
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
@@ -175,10 +199,10 @@ function NavBar(): JSX.Element {
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
+          {/* </Box>  */}
         </Toolbar>
       </Container>
     </AppBar>
-  );
+  )
 }
 export default NavBar;
