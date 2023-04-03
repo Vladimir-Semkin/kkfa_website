@@ -141,10 +141,10 @@ function NavBar(): JSX.Element {
                 onClick={handleOpenUserMenu}
                 sx={{ p: 0 }}
               >
-                <Avatar
+                {/* <Avatar
                   alt="Remy Sharp"
                   src="/static/images/avatar/2.jpg"
-                />
+                /> */}
               </IconButton>
             </Tooltip>
             <Menu

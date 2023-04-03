@@ -84,4 +84,4 @@ const bcrypt = require('bcrypt');
 //   }
 // });
 
-module.exports = router;
+// module.exports = router;

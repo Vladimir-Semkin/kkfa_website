@@ -1,14 +1,14 @@
 'use strict';
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class ParticipansList extends Model {
+  class Participant extends Model {
     static associate({ Application, RaceEvent, Result }) {
-      this.hasOne(Application, { foreignKey: 'applicationId' });
+      this.belongsTo(Application, { foreignKey: 'applicationId' });
       this.belongsTo(RaceEvent, { foreignKey: 'raceEventId' });
-      this.hasMany(Result, { foreignKey: 'participansListId' });
+      this.hasMany(Result, { foreignKey: 'participantId' });
     }
   }
-  ParticipansList.init(
+  Participant.init(
     {
       applicationId: {
         allowNull: false,
@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
           model: 'Applications',
           key: 'id',
         },
+        onDelete: 'CASCADE',
       },
       raceEventId: {
         allowNull: false,
@@ -32,13 +33,13 @@ module.exports = (sequelize, DataTypes) => {
       },
       startNomer: {
         allowNull: false,
-        type: DataTypes.TEXT,
+        type: DataTypes.INTEGER,
       },
     },
     {
       sequelize,
-      modelName: 'ParticipansList',
+      modelName: 'Participant',
     },
   );
-  return ParticipansList;
+  return Participant;
 };
