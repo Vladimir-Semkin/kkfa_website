@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
@@ -29,6 +30,7 @@ export default function RegistrationForm(): JSX.Element {
             <p className={style.error}>Поле обязательно для заполнения</p>
           )}
         </div>
+
         <input
           {...register('familiya', { required: true })}
           placeholder="фамилия"
@@ -38,9 +40,20 @@ export default function RegistrationForm(): JSX.Element {
             <p className={style.error}>Поле обязательно для заполнения</p>
           )}
         </div>
-        <input {...register('otchestvo')} placeholder="отчество" />
+
+        <input
+          {...register('otchestvo', { required: true })}
+          placeholder="отчество"
+        />
+        <div>
+          {errors?.otchestvo && (
+            <p className={style.error}>Поле обязательно для заполнения</p>
+          )}
+        </div>
+
         <input
           {...register('email', { required: true })}
+          type="email"
           placeholder="электронная почта"
         />
         <div>
@@ -50,6 +63,7 @@ export default function RegistrationForm(): JSX.Element {
         </div>
         <input
           {...register('datarojdeniya', { required: true })}
+          type="date"
           placeholder="дата рождения"
         />
         <div>
@@ -82,8 +96,12 @@ export default function RegistrationForm(): JSX.Element {
           )}
         </div>
 
+        <p>
+          Наличие лицензии водителя РАФ или другой НАФ (!обязательное условие
+          для участия в этапе!):
+        </p>
         <select {...register('licenseRAFNAF', { required: true })}>
-          <option>-</option>
+          {/* <option /> */}
           <option
             value="Нет, планирую оформить на этапе (про наличие мед.заключения
             проинформирован)"
@@ -129,26 +147,37 @@ export default function RegistrationForm(): JSX.Element {
           )}
         </div>
 
-        <div className={style.type} {...register('tipPrivoda')}>
+        <div className={style.type}>
           <p>тип привода:</p>
-
           <p>
-            <input name="type" type="radio" />
+            <input
+              {...register('tipPrivoda', { required: true })}
+              type="radio"
+              value="передний"
+            />
             передний
           </p>
           <p>
-            <input name="type" type="radio" />
+            <input
+              {...register('tipPrivoda', { required: true })}
+              type="radio"
+              value="задний"
+            />
             задний
           </p>
           <p>
-            <input name="type" type="radio" />
+            <input
+              {...register('tipPrivoda', { required: true })}
+              type="radio"
+              value="полный"
+            />
             полный
           </p>
-          {/* <div>
-            {errors?.ptivodType && (
+          <div>
+            {errors?.tipPrivoda && (
               <p className={style.error}>Поле обязательно для заполнения</p>
             )}
-          </div> */}
+          </div>
         </div>
 
         <input
@@ -160,11 +189,11 @@ export default function RegistrationForm(): JSX.Element {
           <p>наличие надува:</p>
 
           <p>
-            <input {...register('nalichieNadduva')} name="naduv" type="radio" />
+            <input {...register('nalichieNadduva')} type="radio" value="да" />
             да
           </p>
           <p>
-            <input {...register('nalichieNadduva')} name="naduv" type="radio" />
+            <input {...register('nalichieNadduva')} type="radio" value="нет" />
             нет
           </p>
         </div>
@@ -175,16 +204,16 @@ export default function RegistrationForm(): JSX.Element {
           <p>
             <input
               {...register('mnogodresselnyVpusk')}
-              name="vpusk"
               type="radio"
+              value="да"
             />
             да
           </p>
           <p>
             <input
               {...register('mnogodresselnyVpusk')}
-              name="vpusk"
               type="radio"
+              value="нет"
             />
             нет
           </p>
@@ -196,16 +225,16 @@ export default function RegistrationForm(): JSX.Element {
           <p>
             <input
               {...register('izmFazyGazoraspredeleniya')}
-              name="gaz"
               type="radio"
+              value="да"
             />
             да
           </p>
           <p>
             <input
               {...register('izmFazyGazoraspredeleniya')}
-              name="gaz"
               type="radio"
+              value="нет"
             />
             нет
           </p>
@@ -215,18 +244,14 @@ export default function RegistrationForm(): JSX.Element {
           <p>Нестандартный впуск:</p>
 
           <p>
-            <input
-              {...register('nestandartnyVpusk')}
-              name="vpuskN"
-              type="radio"
-            />
+            <input {...register('nestandartnyVpusk')} type="radio" value="да" />
             да
           </p>
           <p>
             <input
               {...register('nestandartnyVpusk')}
-              name="vpuskN"
               type="radio"
+              value="нет"
             />
             нет
           </p>
@@ -236,16 +261,16 @@ export default function RegistrationForm(): JSX.Element {
           <p>Изменения кузова (замена кузовных элементов, каркас и т.п.):</p>
 
           <p>
-            <input {...register('izmKuzova')} name="cuzov" type="radio" />
+            <input {...register('izmKuzova')} type="radio" value="да" />
             да
           </p>
           <p>
-            <input {...register('izmKuzova')} name="cuzov" type="radio" />
+            <input {...register('izmKuzova')} type="radio" value="нет" />
             нет
           </p>
         </div>
 
-        <div {...register('team')}>
+        <div>
           <p>
             Зачетная группа (с крайнего этапа 2022 года, в котором принимали
             участие):
@@ -253,18 +278,18 @@ export default function RegistrationForm(): JSX.Element {
 
           <p>
             <input
-              {...register('groupListId')}
-              name="group"
+              {...register('groupListId', { required: true })}
               type="checkbox"
+              // value="Стандарт 1"
               value="1"
             />{' '}
             Стандарт 1
           </p>
           <p>
             <input
-              {...register('groupListId')}
-              name="group"
+              {...register('groupListId', { required: true })}
               type="checkbox"
+              // value="Стандарт 2"
               value="2"
             />{' '}
             Стандарт 2
@@ -272,18 +297,18 @@ export default function RegistrationForm(): JSX.Element {
 
           <p>
             <input
-              {...register('groupListId')}
-              name="group"
+              {...register('groupListId', { required: true })}
               type="checkbox"
+              // value="Турбо Сток"
               value="3"
             />{' '}
             Турбо Сток
           </p>
           <p>
             <input
-              {...register('groupListId')}
-              name="group"
+              {...register('groupListId', { required: true })}
               type="checkbox"
+              // value="Sport"
               value="4"
             />{' '}
             Sport
@@ -291,18 +316,18 @@ export default function RegistrationForm(): JSX.Element {
 
           <p>
             <input
-              {...register('groupListId')}
-              name="group"
+              {...register('groupListId', { required: true })}
               type="checkbox"
+              // value="GT"
               value="5"
             />{' '}
             GT
           </p>
           <p>
             <input
-              {...register('groupListId')}
-              name="group"
+              {...register('groupListId', { required: true })}
               type="checkbox"
+              // value="Unlim"
               value="6"
             />{' '}
             Unlim
@@ -310,26 +335,36 @@ export default function RegistrationForm(): JSX.Element {
 
           <p>
             <input
-              {...register('groupListId')}
-              name="groupRace"
+              {...register('groupListId', { required: true })}
               type="checkbox"
+              // value="не знаю, участвую первый раз (первый раз на данном автомобиле)"
               value="7"
             />{' '}
             не знаю, участвую первый раз (первый раз на данном автомобиле)
           </p>
-          {/* <div>
-            {errors?.groupRace && (
-              <p className={style.error}>
-                Поле обязательно для заполнения11111
-              </p>
+          <div>
+            {errors?.groupListId && (
+              <p className={style.error}>Поле обязательно для заполнения!</p>
             )}
-          </div> */}
+          </div>
         </div>
 
-        <input
+        {/* <input
           {...register('team')}
           placeholder="Команда (указывается при условии заявления команды для участия в Чемпионате)"
-        />
+        /> */}
+        <div>
+          Название команды:
+          <select {...register('team')}>
+            <option />
+            <option value="1">Red Bull Racing</option>
+            <option value="2">Honda Power</option>
+            <option value="3">Котики Motorsport</option>
+            <option value="4">Zone 402</option>
+            <option value="5">ARS Stavropol</option>
+          </select>
+        </div>
+
         <input
           {...register('ispolzovanieAutoDrugimi')}
           placeholder="Использование автомобиля другими участниками (указать ФИО)"
@@ -340,7 +375,7 @@ export default function RegistrationForm(): JSX.Element {
         />
 
         <div>
-          <input type="submit" /*disabled={!isValid}*/ />
+          <input type="submit" /* disabled={!isValid} */ />
         </div>
       </form>
     </div>
