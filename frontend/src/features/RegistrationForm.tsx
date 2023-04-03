@@ -377,6 +377,8 @@ export default function RegistrationForm(): JSX.Element {
           <input type="submit" /* disabled={!isValid} */ />
         </div>
       </form>
+
+    
     </div>
   );
 }
