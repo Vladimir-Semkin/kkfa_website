@@ -1,0 +1,15 @@
+.adminForm {
+  display: flex;
+  justify-content: center;
+}
+
+input {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+form p {
+  font-size: 12px;
+  text-align:start;
+  margin-bottom: 3px;
+}
