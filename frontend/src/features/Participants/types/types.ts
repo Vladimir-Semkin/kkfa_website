@@ -1,0 +1,34 @@
+export type Application = {
+  id?: number;
+  name: string;
+  email: string;
+  familiya: string;
+  otchestvo?: string;
+  datarojdeniya: string;
+  gorod: string;
+  phone: string;
+  udostovorenieVoditel: string;
+  licenseRAFNAF: string;
+  medicalReport: string;
+  markaModelAuto: string;
+  gosNomer?: string;
+  objemDvigatelya: string;
+  tipPrivoda?: string;
+  markaModelPokryshek?: string;
+  nalichieNadduva?: string;
+  mnogodresselnyVpusk?: string;
+  izmFazyGazoraspredeleniya?: string;
+  nestandartnyVpusk?: string;
+  izmKuzova?: string;
+  groupListId?: number;
+  team?: string;
+  ispolzovanieAutoDrugimi?: string;
+  startNomer?: string;
+  raceEventId?: number;
+};
+export type State = {
+  applicationsArr: Application[];
+  error: undefined | string;
+};
+// export type IdAdd = Ad['id'];
+export type Message = { message: string };

@@ -12,7 +12,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
-import MultipleSelectPlaceholder from './ChekBoxApplication';
+// import MultipleSelectPlaceholder from './ChekBoxApplication';
 
 export default function FormAddApplication(): JSX.Element {
   return (
@@ -245,7 +245,7 @@ export default function FormAddApplication(): JSX.Element {
             <MenuItem value={20}>Нет</MenuItem>
           </Select>
         </FormControl>
-        <MultipleSelectPlaceholder />
+    
         <TextField
           id="outlined-required"
           label="Команда"

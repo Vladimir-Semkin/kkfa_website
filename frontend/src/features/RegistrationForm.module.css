@@ -1,0 +1,23 @@
+.form {
+  /* background-color: green; */
+}
+
+input{
+  /* width: 300px; */
+  /* height: 60px; */
+}
+
+.type {
+  width: 400px;
+  height: 60px;
+  margin: 5px 0 0 15px;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid;
+  border-radius: 6px; 
+}
+
+.error {
+  font-size: 11px;
+  color: red;
+}
