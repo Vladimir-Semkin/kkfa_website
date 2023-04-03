@@ -7,18 +7,18 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-// import Avatar from '@mui/material/Avatar';
+
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import { Link } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
-const pages = ['Products', 'Pricing', 'Blog'];
+const pages = ['Фотогалерея', 'Календарь', 'Документы'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-function NavBar():JSX.Element {
-
-
+function NavBar(): JSX.Element {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -26,21 +26,21 @@ function NavBar():JSX.Element {
     null
   );
 
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>):void => {
+  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>): void => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>):void => {
+  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>): void => {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseNavMenu = ():void => {
+  const handleCloseNavMenu = (): void => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = ():void => {
+  const handleCloseUserMenu = (): void => {
     setAnchorElUser(null);
   };
-
+  const navigate = useNavigate();
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -122,6 +122,7 @@ function NavBar():JSX.Element {
           >
             LOGO
           </Typography>
+          <Button onClick={()=>navigate('/docs')} style={{color: 'white'}}>кнопка</Button>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
@@ -134,7 +135,7 @@ function NavBar():JSX.Element {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+          {/* <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton
                 onClick={handleOpenUserMenu}
@@ -171,7 +172,7 @@ function NavBar():JSX.Element {
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
+          </Box> */}
         </Toolbar>
       </Container>
     </AppBar>
