@@ -2,34 +2,18 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('ParticipansList', {
+    await queryInterface.createTable('RaceEvents', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      applicationId: {
+      title: {
         allowNull: false,
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Applications',
-          key: 'id',
-        },
+        type: Sequelize.TEXT,
       },
-      raceEventId: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'RaceEvents',
-          key: 'id',
-        },
-      },
-      groupListId: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-      },
-      startNomer: {
+      date: {
         allowNull: false,
         type: Sequelize.TEXT,
       },
@@ -44,6 +28,6 @@ module.exports = {
     });
   },
   async down(queryInterface) {
-    await queryInterface.dropTable('ParticipansList');
+    await queryInterface.dropTable('RaceEvents');
   },
 };

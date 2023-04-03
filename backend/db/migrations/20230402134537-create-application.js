@@ -68,19 +68,19 @@ module.exports = {
         type: Sequelize.TEXT,
       },
       nalichieNadduva: {
-        type: Sequelize.BOOLEAN,
+        type: Sequelize.TEXT,
       },
       mnogodresselnyVpusk: {
-        type: Sequelize.BOOLEAN,
+        type: Sequelize.TEXT,
       },
       izmFazyGazoraspredeleniya: {
-        type: Sequelize.BOOLEAN,
+        type: Sequelize.TEXT,
       },
       nestandartnyVpusk: {
-        type: Sequelize.BOOLEAN,
+        type: Sequelize.TEXT,
       },
       izmKuzova: {
-        type: Sequelize.BOOLEAN,
+        type: Sequelize.TEXT,
       },
       groupListId: {
         allowNull: false,
@@ -92,10 +92,10 @@ module.exports = {
       },
       teamId: {
         type: Sequelize.INTEGER,
-        references:{
-          model:'Teams',
-          key:'id'
-        }
+        references: {
+          model: 'Teams',
+          key: 'id',
+        },
       },
       ispolzovanieAutoDrugimi: {
         type: Sequelize.TEXT,

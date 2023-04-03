@@ -2,9 +2,9 @@
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Application extends Model {
-    static associate({ GroupList, RaceEvent, Team, ParticipansList }) {
+    static associate({ GroupList, RaceEvent, Team, Participant }) {
       this.belongsTo(Team, { foreignKey: 'teamId' });
-      this.hasOne(ParticipansList, { foreignKey: 'applicationId' });
+      this.hasMany(Participant, { foreignKey: 'applicationId' });
       this.belongsTo(GroupList, { foreignKey: 'groupListId' });
       this.belongsTo(RaceEvent, { foreignKey: 'raceEventId' });
     }
@@ -70,19 +70,19 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT,
       },
       nalichieNadduva: {
-        type: DataTypes.BOOLEAN,
+        type: DataTypes.TEXT,
       },
       mnogodresselnyVpusk: {
-        type: DataTypes.BOOLEAN,
+        type: DataTypes.TEXT,
       },
       izmFazyGazoraspredeleniya: {
-        type: DataTypes.BOOLEAN,
+        type: DataTypes.TEXT,
       },
       nestandartnyVpusk: {
-        type: DataTypes.BOOLEAN,
+        type: DataTypes.TEXT,
       },
       izmKuzova: {
-        type: DataTypes.BOOLEAN,
+        type: DataTypes.TEXT,
       },
       groupListId: {
         allowNull: false,
