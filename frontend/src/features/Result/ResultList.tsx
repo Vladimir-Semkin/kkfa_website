@@ -48,7 +48,7 @@ function ResultList(): JSX.Element {
         </div>
         <div>
           <h3>Фотографии с места событий</h3>
-          <div></div>
+          {/* <div></div> */}
         </div>
       </div>
     </>
