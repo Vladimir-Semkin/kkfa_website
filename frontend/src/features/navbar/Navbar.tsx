@@ -145,8 +145,8 @@ function NavBar(): JSX.Element {
                   alt="Remy Sharp"
                   src="/static/images/avatar/2.jpg"
                 /> */}
-              </IconButton>
-            </Tooltip>
+              {/* </IconButton> */}
+            {/* </Tooltip> */}
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
@@ -172,10 +172,10 @@ function NavBar(): JSX.Element {
                 </MenuItem>
               ))}
             </Menu>
-          </Box> */}
+          {/* </Box>  */}
         </Toolbar>
       </Container>
     </AppBar>
-  );
+  )
 }
 export default NavBar;

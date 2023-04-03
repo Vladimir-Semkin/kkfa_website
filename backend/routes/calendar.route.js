@@ -7,7 +7,6 @@ router.get('/', async (req, res) => {
       include: { model: Participant },
       raw: true,
     });
-    console.log(results);
     res.status(200).json(results);
   } catch ({ message }) {
     res.status(500).json(message);

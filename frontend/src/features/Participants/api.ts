@@ -3,7 +3,6 @@ import { Application } from './types/types';
 export const addApplication = async (
   obj: Application
 ): Promise<Application> => {
-  console.log('wwwww')
   const res = await fetch('/api/application', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
