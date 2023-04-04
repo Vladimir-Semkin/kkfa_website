@@ -32,50 +32,37 @@ router.post('/', async (req, res) => {
     } = req.body;
 
     console.log(req.body);
-    console.log(req.body.groupListId.join(', '));
-
-    // if (
-    //   name &&
-    //   email &&
-    //   familiya &&
-    //   datarojdeniya &&
-    //   gorod &&
-    //   phone &&
-    //   udostovorenieVoditel &&
-    //   licenseRAFNAF &&
-    //   medicalReport &&
-    //   markaModelAuto &&
-    //   objemDvigatelya
-    // ) {
-      const application = await Application.create({
-        name,
-        email,
-        familiya,
-        otchestvo,
-        datarojdeniya,
-        gorod,
-        phone,
-        udostovorenieVoditel,
-        licenseRAFNAF,
-        medicalReport,
-        markaModelAuto,
-        gosNomer,
-        objemDvigatelya,
-        tipPrivoda,
-        markaModelPokryshek,
-        nalichieNadduva,
-        mnogodresselnyVpusk,
-        izmFazyGazoraspredeleniya,
-        nestandartnyVpusk,
-        izmKuzova,
-        groupListId: Number(groupListId),
-        team: Number(team),
-        ispolzovanieAutoDrugimi,
-        startNomer: Number(startNomer),
-        raceEventId: Number(raceEventId),
-      });
-      res.json(application);
-    // }
+if(groupListId >= 1 ) { groupListId.forEach(async (el) => {
+    const application = await Application.create({
+      name,
+      email,
+      familiya,
+      otchestvo,
+      datarojdeniya,
+      gorod,
+      phone,
+      udostovorenieVoditel,
+      licenseRAFNAF,
+      medicalReport,
+      markaModelAuto,
+      gosNomer,
+      objemDvigatelya,
+      tipPrivoda,
+      markaModelPokryshek,
+      nalichieNadduva,
+      mnogodresselnyVpusk,
+      izmFazyGazoraspredeleniya,
+      nestandartnyVpusk,
+      izmKuzova,
+      groupListId: Number(el),
+      team: Number(team),
+      ispolzovanieAutoDrugimi,
+      startNomer: Number(startNomer),
+      raceEventId: Number(raceEventId),
+    });
+    res.json(application);
+  }
+    )}
   } catch ({ message }) {
     res.status(500).json(console.log(message));
   }

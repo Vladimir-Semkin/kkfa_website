@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-
 import ResultList from '../features/Result/ResultList';
 import './App.css';
 import Calendar from '../features/Calendar/Calendar';
@@ -34,6 +33,7 @@ function App(): JSX.Element {
           path="/"
           element={<MainCalendar />}
         />
+
         <Route
           path="/registration"
           element={<RegistrationForm />}
@@ -49,6 +49,14 @@ function App(): JSX.Element {
         <Route
           path="/result/:id"
           element={<ResultList />}
+        />
+        <Route
+          path="/lk"
+          element={<LK />}
+        />
+        <Route
+          path="/docs"
+          element={<Document />}
         />
         <Route
           path="/lk"

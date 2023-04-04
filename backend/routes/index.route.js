@@ -6,7 +6,7 @@ const resultRoute = require('./result.route');
 const calendarRoute = require('./calendar.route');
 const lkRoute = require('./lk.route');
 
-router.use('/api/appl', applicationRoute);
+router.use('/api/application', applicationRoute);
 router.use('/api/auth', apiAuthRoute);
 router.use('/api/result', resultRoute);
 router.use('/api/calendar', calendarRoute);
