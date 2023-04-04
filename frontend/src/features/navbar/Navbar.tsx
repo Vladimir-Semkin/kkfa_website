@@ -12,13 +12,25 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { RootState, useAppDispatch } from '../../store';
+import { logoutAdmin } from '../../Admin/types/auth.slice';
+
 import { Link } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+
 
 const pages = ['Фотогалерея', 'Календарь', 'Документы'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function NavBar(): JSX.Element {
+
+  const dispatch = useAppDispatch();
+  const { admin } = useSelector((store: RootState) => store.auth);
+
+
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -94,15 +106,13 @@ function NavBar(): JSX.Element {
               }}
             >
               {pages.map((page) => (
-                <MenuItem
-                  key={page}
-                  onClick={handleCloseNavMenu}
-                >
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
+
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
@@ -122,7 +132,20 @@ function NavBar(): JSX.Element {
           >
             LOGO
           </Typography>
+
+          {'id' in admin && (
+            <>
+              <div style={{ marginRight: '10px' }}>
+                <Link to="/lk">личный кабинет</Link>
+              </div>
+              <div>
+                <Link to="/" onClick={() => dispatch(logoutAdmin())}>выход</Link>
+              </div>
+            </>
+          )}
+
           <Button onClick={()=>navigate('/docs')} style={{color: 'white'}}>кнопка</Button>
+
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
@@ -137,6 +160,12 @@ function NavBar(): JSX.Element {
 
           {/* <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
+
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              </IconButton>
+            </Tooltip>
+
               <IconButton
                 onClick={handleOpenUserMenu}
                 sx={{ p: 0 }}
@@ -147,6 +176,7 @@ function NavBar(): JSX.Element {
                 /> */}
               {/* </IconButton> */}
             {/* </Tooltip> */}
+
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
@@ -164,10 +194,7 @@ function NavBar(): JSX.Element {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem
-                  key={setting}
-                  onClick={handleCloseUserMenu}
-                >
+                <MenuItem key={setting} onClick={handleCloseUserMenu}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}

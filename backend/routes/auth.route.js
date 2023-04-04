@@ -40,7 +40,7 @@ router.post('/sign-in', async (req, res) => {
     const { email, password } = req.body;
     if (email && password) {
       let admin = await Admin.findOne({ where: { email } });
-      if (user && (await bcrypt.compare(password, admin.password))) {
+      if (admin && (await bcrypt.compare(password, admin.password))) {
         admin = {
           id: admin.id,
           email: admin.email,
