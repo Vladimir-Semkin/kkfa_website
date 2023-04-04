@@ -21,157 +21,223 @@ export default function RegistrationForm(): JSX.Element {
   });
 
   return (
-    <div>
+    <div className={style.formContainer}>
       <form className={style.form} onSubmit={onSubmit}>
-        <input {...register('name', { required: true })} placeholder="имя" />
         <div>
-          {errors?.name && (
-            <p className={style.error}>Поле обязательно для заполнения</p>
-          )}
+          <p>Имя:</p>
+          <input
+            className={style.wind}
+            {...register('name', { required: true })}
+            placeholder="Имя"
+          />
+          <div>
+            {errors?.name && (
+              <p className={style.error}>Поле обязательно для заполнения</p>
+            )}
+          </div>
         </div>
 
-        <input
-          {...register('familiya', { required: true })}
-          placeholder="фамилия"
-        />
         <div>
-          {errors?.familiya && (
-            <p className={style.error}>Поле обязательно для заполнения</p>
-          )}
+          <p>Фамилия:</p>
+          <input
+            className={style.wind}
+            {...register('familiya', { required: true })}
+            placeholder="Фамилия"
+          />
+          <div>
+            {errors?.familiya && (
+              <p className={style.error}>Поле обязательно для заполнения</p>
+            )}
+          </div>
         </div>
 
-        <input
-          {...register('otchestvo', { required: true })}
-          placeholder="отчество"
-        />
         <div>
-          {errors?.otchestvo && (
-            <p className={style.error}>Поле обязательно для заполнения</p>
-          )}
+          <p>Отчество:</p>
+          <input
+            className={style.wind}
+            {...register('otchestvo', { required: true })}
+            placeholder="Отчество"
+          />
+          <div>
+            {errors?.otchestvo && (
+              <p className={style.error}>Поле обязательно для заполнения</p>
+            )}
+          </div>
         </div>
 
-        <input
-          {...register('email', { required: true })}
-          type="email"
-          placeholder="электронная почта"
-        />
         <div>
-          {errors?.email && (
-            <p className={style.error}>Поле обязательно для заполнения</p>
-          )}
-        </div>
-        <input
-          {...register('datarojdeniya', { required: true })}
-          type="date"
-          placeholder="дата рождения"
-        />
-        <div>
-          {errors?.datarojdeniya && (
-            <p className={style.error}>Поле обязательно для заполнения</p>
-          )}
-        </div>
-        <input {...register('gorod', { required: true })} placeholder="город" />
-        <div>
-          {errors?.gorod && (
-            <p className={style.error}>Поле обязательно для заполнения</p>
-          )}
-        </div>
-        <input
-          {...register('phone', { required: true })}
-          placeholder="телефон"
-        />
-        <div>
-          {errors?.phone && (
-            <p className={style.error}>Поле обязательно для заполнения</p>
-          )}
-        </div>
-        <input
-          {...register('udostovorenieVoditel', { required: true })}
-          placeholder="водительское удостоверение (серия и номер)"
-        />
-        <div>
-          {errors?.udostovorenieVoditel && (
-            <p className={style.error}>Поле обязательно для заполнения</p>
-          )}
+          <p>Электронная почта:</p>
+          <input
+            className={style.wind}
+            {...register('email', { required: true })}
+            type="email"
+            placeholder="Электронная почта"
+          />
+          <div>
+            {errors?.email && (
+              <p className={style.error}>Поле обязательно для заполнения</p>
+            )}
+          </div>
         </div>
 
-        <p>
-          Наличие лицензии водителя РАФ или другой НАФ (!обязательное условие
-          для участия в этапе!):
-        </p>
-        <select {...register('licenseRAFNAF', { required: true })}>
-          {/* <option /> */}
-          <option
-            value="Нет, планирую оформить на этапе (про наличие мед.заключения
-            проинформирован)"
+        <div>
+          <p>Дата рождения:</p>
+          <input
+            className={style.wind}
+            {...register('datarojdeniya', { required: true })}
+            type="date"
+            placeholder="Дата рождения"
+          />
+          <div>
+            {errors?.datarojdeniya && (
+              <p className={style.error}>Поле обязательно для заполнения</p>
+            )}
+          </div>
+        </div>
+
+        <div>
+          <p>Город:</p>
+          <input
+            className={style.wind}
+            {...register('gorod', { required: true })}
+            placeholder="Город"
+          />
+          <div>
+            {errors?.gorod && (
+              <p className={style.error}>Поле обязательно для заполнения</p>
+            )}
+          </div>
+        </div>
+
+        <div>
+          <p>Телефон:</p>
+          <input
+            className={style.wind}
+            {...register('phone', { required: true })}
+            placeholder="Телефон"
+          />
+          <div>
+            {errors?.phone && (
+              <p className={style.error}>Поле обязательно для заполнения</p>
+            )}
+          </div>
+        </div>
+
+        <div>
+          <p>В/у (серия и номер):</p>
+          <input
+            className={style.wind}
+            {...register('udostovorenieVoditel', { required: true })}
+            placeholder="В/у (серия и номер)"
+          />
+          <div>
+            {errors?.udostovorenieVoditel && (
+              <p className={style.error}>Поле обязательно для заполнения</p>
+            )}
+          </div>
+        </div>
+
+        <div>
+          <p>Наличие лицензии водителя РАФ (обязательно для участия!):</p>
+          <select
+            className={style.medSelect}
+            {...register('licenseRAFNAF', { required: true })}
           >
-            Нет, планирую оформить на этапе (про наличие мед.заключения
-            проинформирован)
-          </option>
-          <option value="Да">Да</option>
-        </select>
-        <div>
-          {errors?.licenseRAFNAF && (
-            <p className={style.error}>Поле обязательно для заполнения</p>
-          )}
+            {/* <option /> */}
+            <option value="Планирую оформить на этапе">
+              Планирую оформить на этапе
+            </option>
+            <option value="Да">Да</option>
+          </select>
+          <div>
+            {errors?.licenseRAFNAF && (
+              <p className={style.error}>Поле обязательно для заполнения</p>
+            )}
+          </div>
         </div>
 
-        <input
-          {...register('medicalReport', { required: true })}
-          placeholder="Наличие медицинского заключения (!обязательное условие для участия в этапе!) - указать наименование мед.учреждения и дату выдачи"
-        />
         <div>
-          {errors?.medicalReport && (
-            <p className={style.error}>Поле обязательно для заполнения</p>
-          )}
-        </div>
-        <input
-          {...register('markaModelAuto', { required: true })}
-          placeholder="Марка и модель авто (!полностью!)"
-        />
-        <div>
-          {errors?.markaModelAuto && (
-            <p className={style.error}>Поле обязательно для заполнения</p>
-          )}
-        </div>
-        <input {...register('gosNomer')} placeholder="госномер авто" />
-
-        <input
-          {...register('objemDvigatelya', { required: true })}
-          placeholder="объем двигателя"
-        />
-        <div>
-          {errors?.objemDvigatelya && (
-            <p className={style.error}>Поле обязательно для заполнения</p>
-          )}
+          <p>
+            Наличие мед. заключения. Указать наименование мед.учреждения и дату
+            выдачи:
+          </p>
+          <input
+            className={style.wind}
+            {...register('medicalReport', { required: true })}
+            placeholder="Наличие мед. заключения. Указать наименование мед.учреждения и дату выдачи"
+          />
+          <div>
+            {errors?.medicalReport && (
+              <p className={style.error}>Поле обязательно для заполнения</p>
+            )}
+          </div>
         </div>
 
-        <div className={style.type}>
-          <p>тип привода:</p>
-          <p>
-            <input
-              {...register('tipPrivoda', { required: true })}
-              type="radio"
-              value="передний"
-            />
-            передний
-          </p>
-          <p>
-            <input
-              {...register('tipPrivoda', { required: true })}
-              type="radio"
-              value="задний"
-            />
-            задний
-          </p>
-          <p>
-            <input
-              {...register('tipPrivoda', { required: true })}
-              type="radio"
-              value="полный"
-            />
-            полный
-          </p>
+        <div>
+          <p>Марка и модель авто (полностью!):</p>
+          <input
+            className={style.wind}
+            {...register('markaModelAuto', { required: true })}
+            placeholder="Марка и модель авто (полностью!)"
+          />
+          <div>
+            {errors?.markaModelAuto && (
+              <p className={style.error}>Поле обязательно для заполнения</p>
+            )}
+          </div>
+        </div>
+
+        <div>
+          <p>Госномер авто:</p>
+          <input
+            className={style.wind}
+            {...register('gosNomer')}
+            placeholder="Госномер авто"
+          />
+        </div>
+
+        <div>
+          <p>Объем двигателя:</p>
+          <input
+            className={style.wind}
+            {...register('objemDvigatelya', { required: true })}
+            placeholder="Объем двигателя"
+          />
+          <div>
+            {errors?.objemDvigatelya && (
+              <p className={style.error}>Поле обязательно для заполнения</p>
+            )}
+          </div>
+        </div>
+
+        <div>
+          <p>Тип привода:</p>
+          <div className={style.type}>
+            <p>
+              <input
+                {...register('tipPrivoda', { required: true })}
+                type="radio"
+                value="передний"
+              />
+              Передний
+            </p>
+            <p>
+              <input
+                {...register('tipPrivoda', { required: true })}
+                type="radio"
+                value="задний"
+              />
+              Задний
+            </p>
+            <p>
+              <input
+                {...register('tipPrivoda', { required: true })}
+                type="radio"
+                value="полный"
+              />
+              Полный
+            </p>
+          </div>
           <div>
             {errors?.tipPrivoda && (
               <p className={style.error}>Поле обязательно для заполнения</p>
@@ -179,94 +245,111 @@ export default function RegistrationForm(): JSX.Element {
           </div>
         </div>
 
-        <input
-          {...register('markaModelPokryshek')}
-          placeholder="марка, модель покрышек"
-        />
-
-        <div className={style.type}>
-          <p>наличие надува:</p>
-
-          <p>
-            <input {...register('nalichieNadduva')} type="radio" value="да" />
-            да
-          </p>
-          <p>
-            <input {...register('nalichieNadduva')} type="radio" value="нет" />
-            нет
-          </p>
+        <div>
+          <p>Марка, модель покрышек:</p>
+          <input
+            className={style.wind}
+            {...register('markaModelPokryshek')}
+            placeholder="марка, модель покрышек"
+          />
         </div>
 
-        <div className={style.type}>
+        <div>
+          <p>Наличие надува:</p>
+          <div className={style.type}>
+            <p>
+              <input {...register('nalichieNadduva')} type="radio" value="да" />
+              Да
+            </p>
+            <p>
+              <input
+                {...register('nalichieNadduva')}
+                type="radio"
+                value="нет"
+              />
+              Нет
+            </p>
+          </div>
+        </div>
+
+        <div>
           <p>Многодроссельный впуск:</p>
-
-          <p>
-            <input
-              {...register('mnogodresselnyVpusk')}
-              type="radio"
-              value="да"
-            />
-            да
-          </p>
-          <p>
-            <input
-              {...register('mnogodresselnyVpusk')}
-              type="radio"
-              value="нет"
-            />
-            нет
-          </p>
+          <div className={style.type}>
+            <p>
+              <input
+                {...register('mnogodresselnyVpusk')}
+                type="radio"
+                value="да"
+              />
+              Да
+            </p>
+            <p>
+              <input
+                {...register('mnogodresselnyVpusk')}
+                type="radio"
+                value="нет"
+              />
+              Нет
+            </p>
+          </div>
         </div>
 
-        <div className={style.type}>
+        <div>
           <p>Измененные фазы газораспределения:</p>
-
-          <p>
-            <input
-              {...register('izmFazyGazoraspredeleniya')}
-              type="radio"
-              value="да"
-            />
-            да
-          </p>
-          <p>
-            <input
-              {...register('izmFazyGazoraspredeleniya')}
-              type="radio"
-              value="нет"
-            />
-            нет
-          </p>
+          <div className={style.type}>
+            <p>
+              <input
+                {...register('izmFazyGazoraspredeleniya')}
+                type="radio"
+                value="да"
+              />
+              Да
+            </p>
+            <p>
+              <input
+                {...register('izmFazyGazoraspredeleniya')}
+                type="radio"
+                value="нет"
+              />
+              Нет
+            </p>
+          </div>
         </div>
 
-        <div className={style.type}>
+        <div>
           <p>Нестандартный впуск:</p>
-
-          <p>
-            <input {...register('nestandartnyVpusk')} type="radio" value="да" />
-            да
-          </p>
-          <p>
-            <input
-              {...register('nestandartnyVpusk')}
-              type="radio"
-              value="нет"
-            />
-            нет
-          </p>
+          <div className={style.type}>
+            <p>
+              <input
+                {...register('nestandartnyVpusk')}
+                type="radio"
+                value="да"
+              />
+              Да
+            </p>
+            <p>
+              <input
+                {...register('nestandartnyVpusk')}
+                type="radio"
+                value="нет"
+              />
+              Нет
+            </p>
+          </div>
         </div>
 
-        <div className={style.type}>
+        <div>
           <p>Изменения кузова (замена кузовных элементов, каркас и т.п.):</p>
-
-          <p>
-            <input {...register('izmKuzova')} type="radio" value="да" />
-            да
-          </p>
-          <p>
-            <input {...register('izmKuzova')} type="radio" value="нет" />
-            нет
-          </p>
+          <div className={style.type}>
+            <p>
+              <input {...register('izmKuzova')} type="radio" value="да" />
+              Да
+            </p>
+            <p>
+              <input {...register('izmKuzova')} type="radio" value="нет" />
+              Нет
+            </p>
+          </div>
         </div>
 
         <div>
@@ -339,7 +422,7 @@ export default function RegistrationForm(): JSX.Element {
               // value="не знаю, участвую первый раз (первый раз на данном автомобиле)"
               value="7"
             />{' '}
-            не знаю, участвую первый раз (первый раз на данном автомобиле)
+            Не знаю, участвую первый раз (первый раз на данном автомобиле)
           </p>
           <div>
             {errors?.groupListId && (
@@ -354,7 +437,7 @@ export default function RegistrationForm(): JSX.Element {
         /> */}
         <div>
           Название команды:
-          <select {...register('team')}>
+          <select className={style.groupSelect} {...register('team')}>
             <option />
             <option value="1">Red Bull Racing</option>
             <option value="2">Honda Power</option>
@@ -364,21 +447,43 @@ export default function RegistrationForm(): JSX.Element {
           </select>
         </div>
 
-        <input
-          {...register('ispolzovanieAutoDrugimi')}
-          placeholder="Использование автомобиля другими участниками (указать ФИО)"
-        />
-        <input
-          {...register('startNomer')}
-          placeholder="Стартовый номер (от 1 до 99) (желаемый!* будет подтвержден при регистрации)"
-        />
+        <div>
+          <p>Использование автомобиля другими участниками (ФИО):</p>
+          <input
+            className={style.wind}
+            {...register('ispolzovanieAutoDrugimi')}
+            placeholder="Использование автомобиля другими участниками (указать ФИО)"
+          />
+        </div>
 
         <div>
-          <input type="submit" /* disabled={!isValid} */ />
+          <p>
+            Стартовый номер (от 1 до 99) (желаемый!* будет подтвержден при
+            регистрации)
+          </p>
+          <input
+            className={style.wind}
+            {...register('startNomer')}
+            placeholder="Стартовый номер (от 1 до 99) (желаемый!* будет подтвержден при регистрации)"
+          />
+        </div>
+
+        <div>
+          <p>Название соревнования????????</p>
+          <input
+            className={style.wind}
+            {...register('raceEventId')}
+            placeholder="race"
+          />
+        </div>
+
+        <div>
+          <input
+            className={style.btn}
+            type="submit" /* disabled={!isValid} */
+          />
         </div>
       </form>
-
-    
     </div>
   );
 }
