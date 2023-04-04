@@ -3,10 +3,10 @@ export type Result = {
   familiya: string;
   name: string;
   otchestvo: string;
-  'Participant.startNomer': number;
-  'Participant.Results.time': string;
-  'Participant.Results.attempt': string;
-  'Participant.raceEventId': number;
+  'Participants.startNomer': number;
+  'Participants.Results.time': string;
+  'Participants.Results.attempt': string;
+  'Participants.raceEventId': number;
 };
 export type State = {
   resultsArr: Result[];

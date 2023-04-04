@@ -8,7 +8,7 @@ const initialState: State = {
 };
 
 export const initResult = createAsyncThunk('result/init', () =>
-  api.initResult(),
+  api.initResult()
 );
 
 const resultSlice = createSlice({
@@ -18,8 +18,6 @@ const resultSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(initResult.fulfilled, (state, action) => {
-        console.log(action.payload);
-
         state.resultsArr = action.payload;
       })
       .addCase(initResult.rejected, (state, action) => {

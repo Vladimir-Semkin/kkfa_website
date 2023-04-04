@@ -38,7 +38,7 @@ function Document(): JSX.Element {
         >
           Скачать
         </Button>
-      </div>
+      </div> 
     </div>
   );
 }
