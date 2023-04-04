@@ -7,19 +7,16 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-
 import Button from '@mui/material/Button';
 // import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-
-import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../store';
 import { logoutAdmin } from '../../Admin/types/auth.slice';
-
 // import { Link } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
 
 const pages = ['Фотогалерея', 'Календарь', 'Документы'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -34,7 +31,6 @@ function NavBar(): JSX.Element {
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null,
   );
-
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>): void => {
     setAnchorElNav(event.currentTarget);
   };
@@ -103,7 +99,10 @@ function NavBar(): JSX.Element {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem
+                  key={page}
+                  onClick={handleCloseNavMenu}
+                >
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
