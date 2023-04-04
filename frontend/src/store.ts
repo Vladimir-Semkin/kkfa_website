@@ -12,7 +12,7 @@ const store = configureStore({
     result: resultSlice,
     race: raceSlice,
     ad: applicationSlice,
-    lk: lkSlice
+    lk: lkSlice,
     auth: authSlice
   },
 });

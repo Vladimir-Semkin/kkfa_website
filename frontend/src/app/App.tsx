@@ -38,7 +38,7 @@ function App(): JSX.Element {
         <Route path="/lk" element={<LK />} />
         <Route path="/lk/race/:id" element={<EventParams />} />
         <Route path="/docs" element={<Document />} />
-        <Route path="/admin" element={<AdminPage />} />
+        {/* <Route path="/admin" element={<AdminPage />} /> */}
       </Routes>
     </>
   );
