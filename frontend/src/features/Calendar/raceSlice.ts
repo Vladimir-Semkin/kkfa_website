@@ -24,24 +24,34 @@ const raceSlice = createSlice({
     builder
       .addCase(initRace.fulfilled, (state, action) => {
         state.racesArr = action.payload;
+        state.error = undefined;
+
       })
+      .addCase(initRace.pending, (state, action) => {
+        state.error = 'Загрузка...';
+
+      })
+      .addCase(initRace.pending, (state, action) => {
+        state.error = 'загрузка';
+      })
+
       .addCase(initRace.rejected, (state, action) => {
         state.error = action.error.message;
-      })
-      // .addCase(addRace.fulfilled, (state, action) => {
-      //   state.racesArr.push(action.payload);
-      // })
-      // .addCase(addRace.rejected, (state, action) => {
-      //   state.error = action.error.message;
-      // })
-      // .addCase(delRace.fulfilled, (state, action) => {
-      //   state.racesArr = state.racesArr.filter(
-      //     (race) => race.id !== Number(action.payload),
-      //   );
-      // })
-      // .addCase(delRace.rejected, (state, action) => {
-      //   state.error = action.error.message;
-      // });
+      });
+    // .addCase(addRace.fulfilled, (state, action) => {
+    //   state.racesArr.push(action.payload);
+    // })
+    // .addCase(addRace.rejected, (state, action) => {
+    //   state.error = action.error.message;
+    // })
+    // .addCase(delRace.fulfilled, (state, action) => {
+    //   state.racesArr = state.racesArr.filter(
+    //     (race) => race.id !== Number(action.payload),
+    //   );
+    // })
+    // .addCase(delRace.rejected, (state, action) => {
+    //   state.error = action.error.message;
+    // });
   },
 });
 

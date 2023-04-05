@@ -28,7 +28,10 @@ function EventParams(): JSX.Element {
       const data = new FormData();
       picturesData.forEach((img) => {
         data.append('homesImg', img);
+        // console.log(data);
       });
+      data.append('id', String(id));
+
       dispatch(photoRouter(data));
       // eslint-disable-next-line no-empty
     } catch (error) {}
@@ -38,7 +41,9 @@ function EventParams(): JSX.Element {
     <div className="col s3 ">
       {race && (
         <div className="card-image">
-          <div onClick={() => navigate(`/lk/race/${id}/application`)}>Заявки</div>
+          <div onClick={() => navigate(`/lk/race/${id}/application`)}>
+            Заявки
+          </div>
           <p>Участники</p>
           <p>Результаты</p>
           <form onSubmit={update}>
@@ -55,23 +60,24 @@ function EventParams(): JSX.Element {
             <p>Фото:</p>
             <input onChange={(e) => setPhoto(e.target.value)} value={photo} />
 
-            <div>
-              {race.photo && (
-                <img
-                  style={{ width: '200px' }}
-                  src={race.photo}
-                  alt="cardPhoto"
-                />
-              )}
-            </div>
-
             <p>Описание:</p>
             <input
               onChange={(e) => setDescription(e.target.value)}
               value={description}
             />
             <div>
-              <button type="submit">сохранить изменения</button>
+              {race.photo && (
+                <img
+                  className={style.updPhoto}
+                  src={race.photo}
+                  alt="cardPhoto"
+                />
+              )}
+            </div>
+            <div>
+              <button className={style.btnUpd} type="submit">
+                сохранить изменения
+              </button>
             </div>
           </form>
 
@@ -91,16 +97,16 @@ function EventParams(): JSX.Element {
                 multiple
                 onChange={sendFiles}
               />
-            <button
-              style={{
-                backgroundColor: 'green',
-                color: 'white',
-                width: '115px',
-              }}
-              type="submit"
-            >
-              Добавить фотографии
-            </button>
+              <button
+                style={{
+                  backgroundColor: 'green',
+                  color: 'white',
+                  width: '115px',
+                }}
+                type="submit"
+              >
+                Добавить фотографии
+              </button>
             </form>
           </div>
         </div>

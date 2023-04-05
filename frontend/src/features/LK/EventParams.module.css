@@ -7,3 +7,14 @@
   padding: 0;
   margin: 0; */
 }
+
+
+.updPhoto {
+  width: 200px;
+  border-radius: 24px;
+  margin: 10px;
+}
+
+.btnUpd {
+  margin: 10px;
+}

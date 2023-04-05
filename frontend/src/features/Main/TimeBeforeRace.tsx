@@ -1,11 +1,22 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import Stack from '@mui/material/Stack';
+import CircularProgress from '@mui/material/CircularProgress';
 import { RootState, useAppDispatch } from '../../store';
 import { initRace } from '../Calendar/raceSlice';
+import Contacts from '../contacts/Contacts';
+import ScoringGroups from '../ScoringGroups/ScoringGroups';
+import CalendarCard from './CalendarCard';
+import Stack from '@mui/material/Stack';
+import CircularProgress from '@mui/material/CircularProgress';
 import './MainCalendar.css';
+import Stack from '@mui/material/Stack';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 function TimeBeforeRace(): JSX.Element {
-  const { racesArr } = useSelector((store: RootState) => store.race);
+
+  const { racesArr, error } = useSelector((store: RootState) => store.race);
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(initRace());
@@ -36,9 +47,39 @@ function TimeBeforeRace(): JSX.Element {
 
   return (
     <div className="cont">
-      <h1>Ближайший этап: {actualDate}</h1>
+
+      {error ?  <span>
+        {' '}
+        <Stack
+          sx={{ color: 'grey.500' }}
+          spacing={2}
+          direction="row"
+        >
+          <CircularProgress 
+          // color="secondary" 
+          sx={{color:'black' }}
+          />
+        </Stack>
+      </span>:<h1>Ближайший этап: {actualDate}</h1>}
+      
+      <div className="container">
+        {racesArr.length > 0
+          ? racesArr.map((race) => (
+              <CalendarCard
+                race={race}
+                key={race.id}
+              />
+            ))
+          : null}
+      </div>
+    
+    
+      
+    
+
     </div>
   );
 }
 
 export default TimeBeforeRace;
+

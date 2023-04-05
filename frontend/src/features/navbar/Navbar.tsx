@@ -11,11 +11,11 @@ import Button from '@mui/material/Button';
 // import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../store';
 import { logoutAdmin } from '../Admin/types/auth.slice';
+import style from './Navbar.module.css';
 // import { Link } from '@mui/material';
 
 const pages = ['Фотогалерея', 'Календарь', 'Документы'];
@@ -46,143 +46,105 @@ function NavBar(): JSX.Element {
     setAnchorElUser(null);
   };
   const navigate = useNavigate();
+
   return (
-    <div style={{ width: '100vw' }}>
-      <AppBar position="static">
-        <Container maxWidth="xl">
-          <Toolbar disableGutters>
-            <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+    <AppBar position="static">
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
+          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <Typography
+            variant="h5"
+            noWrap
+            component="a"
+            href=""
+            sx={{
+              mr: 2,
+              display: { xs: 'flex', md: 'none' },
+              flexGrow: 1,
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            LOGO
+          </Typography>
 
-            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleOpenNavMenu}
-                color="inherit"
-              >
-                <MenuIcon />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorElNav}
-                anchorOrigin={{
-                  vertical: 'bottom',
-                  horizontal: 'left',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'left',
-                }}
-                open={Boolean(anchorElNav)}
-                onClose={handleCloseNavMenu}
-                sx={{
-                  display: { xs: 'block', md: 'none' },
-                }}
-              >
-                {pages.map((page) => (
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page}</Typography>
-                  </MenuItem>
-                ))}
-              </Menu>
-            </Box>
-
-            <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-            <Typography
-              variant="h5"
-              noWrap
-              component="a"
-              href=""
-              sx={{
-                mr: 2,
-                display: { xs: 'flex', md: 'none' },
-                flexGrow: 1,
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'inherit',
-                textDecoration: 'none',
-              }}
-            >
-              LOGO
-            </Typography>
-
-            {'id' in admin && (
-              <>
-                <div style={{ marginRight: '10px' }}>
-                  <Link to="/lk">личный кабинет</Link>
-                </div>
-                <div>
-                  <Link to="/" onClick={() => dispatch(logoutAdmin())}>
-                    выход
-                  </Link>
-                </div>
-              </>
-            )}
-
-            <Button
-              onClick={() => navigate('/docs')}
-              style={{ color: 'white' }}
-            >
-              Документы
-            </Button>
-            <Button onClick={() => navigate('/')} style={{ color: 'white' }}>
-              На главную
-            </Button>
-            <Button
-              onClick={() => navigate('/abouttimeattack')}
-              style={{ color: 'white' }}
-            >
-              time-attack
-            </Button>
-            <Button
-              onClick={() => navigate('/calendar')}
-              style={{ color: 'white' }}
-            >
-              Календарь
-            </Button>
-            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-              {pages.map((page) => (
-                <Button
-                  key={page}
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
+          {'id' in admin && (
+            <>
+              <div style={{ marginRight: '10px' }}>
+                <Link className={style.link} to="/lk">
+                  ЛИЧНЫЙ КАБИНЕТ
+                </Link>
+              </div>
+              <div>
+                <Link
+                  className={style.link}
+                  to="/"
+                  onClick={() => dispatch(logoutAdmin())}
                 >
-                  {page}
-                </Button>
-              ))}
-            </Box>
+                  ВЫХОД
+                </Link>
+              </div>
+            </>
+          )}
 
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-            {/* </Box>  */}
-          </Toolbar>
-        </Container>
-      </AppBar>
-    </div>
+          <Button onClick={() => navigate('/docs')} style={{ color: 'white' }}>
+            Документы
+          </Button>
+          <Button onClick={() => navigate('/')} style={{ color: 'white' }}>
+            На главную
+          </Button>
+          <Button
+            onClick={() => navigate('/abouttimeattack')}
+            style={{ color: 'white' }}
+          >
+            time-attack
+          </Button>
+          <Button
+            onClick={() => navigate('/calendar')}
+            style={{ color: 'white' }}
+          >
+            Календарь
+          </Button>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            {pages.map((page) => (
+              <Button
+                key={page}
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                {page}
+              </Button>
+            ))}
+          </Box>
+
+          <Menu
+            sx={{ mt: '45px' }}
+            id="menu-appbar"
+            anchorEl={anchorElUser}
+            anchorOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+            open={Boolean(anchorElUser)}
+            onClose={handleCloseUserMenu}
+          >
+            {settings.map((setting) => (
+              <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                <Typography textAlign="center">{setting}</Typography>
+              </MenuItem>
+            ))}
+          </Menu>
+        </Toolbar>
+      </Container>
+    </AppBar>
   );
 }
 export default NavBar;

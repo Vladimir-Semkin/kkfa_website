@@ -26,22 +26,22 @@ export default function ScoringGroups() {
         className="mySwiper"
       >
         <SwiperSlide>
-          <img src="/sliderImage/IMG_9123.jpg" alt="..." />
+          <img src="/sliderImage/IMG_9620OBR.jpg" alt="..." />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="/sliderImage/IMG_9481.jpg" alt="..." />
+          <img src="/sliderImage/IMG_9481OBR.jpg" alt="..." />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="/sliderImage/IMG_8944.jpg" alt="..." />
+          <img src="/sliderImage/IMG_8933OBR.jpg" alt="..." />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="/sliderImage/IMG_0392.jpg" alt="..." />
+          <img src="/sliderImage/IMG_0725OBR.jpg" alt="..." />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="/sliderImage/IMG_9903.jpg" alt="..." />
+          <img src="/sliderImage/IMG_9903OBR.jpg" alt="..." />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="/sliderImage/IMG_0566.jpg" alt="..." />
+          <img src="/sliderImage/IMG_1240.OBR.jpg" alt="..." />
         </SwiperSlide>
       </Swiper>
     </div>
