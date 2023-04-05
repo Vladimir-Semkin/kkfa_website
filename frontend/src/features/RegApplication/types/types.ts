@@ -30,5 +30,5 @@ export type State = {
   applicationsArr: Application[];
   error: undefined | string;
 };
-// export type IdAdd = Ad['id'];
 export type Message = { message: string };
+export type IdApplication = Application['id'];

@@ -13,7 +13,7 @@ function CalendarRace({ race }: { race: Race }): JSX.Element {
   return (
     <div>
       <div
-        onClick={() => navigate(`/result/${race['Participants.raceEventId']}`)}
+        onClick={() => navigate(`/race/${race.id}`)}
       >
         {race.title} {race.date}
       </div>

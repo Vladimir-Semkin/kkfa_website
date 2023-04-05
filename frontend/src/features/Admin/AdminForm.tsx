@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import style from './AdminForm.module.css';
-import { RootState } from '../store';
+import { RootState } from '../../store';
 import { loginAdmin } from './types/auth.slice';
 
 export default function AdminForm(): JSX.Element {

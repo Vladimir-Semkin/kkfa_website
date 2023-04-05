@@ -2,10 +2,11 @@ import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 import raceSlice from './features/Calendar/raceSlice';
 import resultSlice from './features/Result/resultSlice';
-import applicationSlice from './features/Participants/applicationSlice';
+import applicationSlice from './features/RegApplication/applicationSlice';
 import lkSlice from './features/LK/lkSlice';
-import authSlice from './Admin/types/auth.slice';
-// import adSlice from './features/Ad/adSlice';
+import authSlice from './features/Admin/types/auth.slice';
+import applSlice from './features/Application/applSlice';
+import partSlice from './features/Participant/partSlice';
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,8 @@ const store = configureStore({
     ad: applicationSlice,
     lk: lkSlice,
     auth: authSlice,
+    application: applSlice,
+    participant: partSlice,
   },
 });
 
