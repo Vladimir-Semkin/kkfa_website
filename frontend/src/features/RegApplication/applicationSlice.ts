@@ -9,10 +9,8 @@ const initialState: State = {
 
 export const addApplication = createAsyncThunk(
   'application/add',
-  (action: Application) => api.addApplication(action)
+  (action: Application) => api.addApplication(action),
 );
-
-
 
 const applicationSlice = createSlice({
   name: 'application',
@@ -25,14 +23,18 @@ const applicationSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(addApplication.fulfilled, (state, action) => {
-        state.applicationsArr.push(action.payload);
+        if (Array.isArray(action.payload)) {
+          action.payload.forEach((application) =>
+            state.applicationsArr.push(application),
+          );
+        } else {
+          state.applicationsArr.push(action.payload);
+        }
       })
       .addCase(addApplication.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },
 });
-
-// export const { ann } = applicationSlice.actions;
 
 export default applicationSlice.reducer;

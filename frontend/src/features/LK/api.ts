@@ -26,7 +26,7 @@ export const delRace = async (id: IdRace): Promise<number | Message> => {
   }
   return res.json();
 };
-export const updRace = async (obj: Race): Promise<Race> => {
+export const updRace = async (obj: Race): Promise<Race | Message> => {
   const res = await fetch(`/api/lk/${obj.id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
@@ -40,7 +40,6 @@ export const updRace = async (obj: Race): Promise<Race> => {
 };
 
 export const photoRouter = async (photoArr: any): Promise<string[]> => {
-  console.log(photoArr);
   const res = await fetch('/api/photo', {
     method: 'PUT',
     body: photoArr,

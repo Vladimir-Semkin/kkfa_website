@@ -13,9 +13,9 @@ function EventsList(): JSX.Element {
   }, []);
   return (
     <div>
-      {racesArr.length > 0
-        ? racesArr.map((race) => <EventCard race={race} key={race.id} />)
-        : null}
+      {racesArr.map((race) => (
+        <EventCard race={race} key={race.id} />
+      ))}
     </div>
   );
 }

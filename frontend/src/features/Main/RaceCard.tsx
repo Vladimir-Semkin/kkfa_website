@@ -8,14 +8,11 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import { Race } from '../Calendar/types/types';
 
-function CalendarCard({ race }: { race: Race }): JSX.Element {
+function RaceCard({ race }: { race: Race }): JSX.Element {
   const navigate = useNavigate();
  
   return (
-    <Card
-      sx={{ maxWidth: 345 }}
-      className="raceCard"
-    >
+    <Card sx={{ maxWidth: 345 }} className="raceCard">
       <CardActionArea>
         <CardMedia
           component="img"
@@ -24,11 +21,7 @@ function CalendarCard({ race }: { race: Race }): JSX.Element {
           alt="green iguana"
         />
         <CardContent>
-          <Typography
-            gutterBottom
-            variant="h5"
-            component="div"
-          >
+          <Typography gutterBottom variant="h5" component="div">
             {race.title}
           </Typography>
           <Typography
@@ -41,9 +34,7 @@ function CalendarCard({ race }: { race: Race }): JSX.Element {
       </CardActionArea>
       <CardActions>
         <Button
-          onClick={() =>
-            navigate(`/result/${race['Participants.raceEventId']}`)
-          }
+          onClick={() => navigate(`/race/${race.id}`)}
           type="button"
           size="small"
           color="primary"
@@ -55,4 +46,4 @@ function CalendarCard({ race }: { race: Race }): JSX.Element {
   );
 }
 
-export default CalendarCard;
+export default RaceCard;

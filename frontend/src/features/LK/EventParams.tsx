@@ -38,7 +38,7 @@ function EventParams(): JSX.Element {
     <div className="col s3 ">
       {race && (
         <div className="card-image">
-          <p>Заявки</p>
+          <div onClick={() => navigate(`/lk/race/${id}/application`)}>Заявки</div>
           <p>Участники</p>
           <p>Результаты</p>
           <form onSubmit={update}>
