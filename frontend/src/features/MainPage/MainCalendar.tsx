@@ -5,11 +5,12 @@ import { initRace } from '../Calendar/raceSlice';
 import Contacts from '../contacts/Contacts';
 import ScoringGroups from '../ScoringGroups/ScoringGroups';
 import CalendarCard from './CalendarCard';
-
+import Stack from '@mui/material/Stack';
+import CircularProgress from '@mui/material/CircularProgress';
 import './MainCalendar.css';
 
 function MainCalendar(): JSX.Element {
-  const { racesArr } = useSelector((store: RootState) => store.race);
+  const { racesArr, error } = useSelector((store: RootState) => store.race);
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(initRace());
@@ -40,8 +41,20 @@ function MainCalendar(): JSX.Element {
 
   return (
     <div className="cont">
-      <h1>Ближайший этап: {actualDate}</h1>
-      {' '}
+      {error ?  <span>
+        {' '}
+        <Stack
+          sx={{ color: 'grey.500' }}
+          spacing={2}
+          direction="row"
+        >
+          <CircularProgress 
+          // color="secondary" 
+          sx={{color:'black' }}
+          />
+        </Stack>
+      </span>:<h1>Ближайший этап: {actualDate}</h1>}
+      
       <div className="container">
         {racesArr.length > 0
           ? racesArr.map((race) => (
@@ -54,7 +67,7 @@ function MainCalendar(): JSX.Element {
       </div>
       <div className="slider">
         <ScoringGroups />
-        <Contacts/>
+        <Contacts />
       </div>
     </div>
   );
