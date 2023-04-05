@@ -12,25 +12,25 @@ function EventCard({ race }: { race: Race }): JSX.Element {
     dispatch(delRace(race.id));
   };
   return (
-    <div>
-      <div onClick={() => navigate(`/lk/race/${race.id}`)}>
-        <div>
-          {race.photo && (
-            <img
-              className={style.photoEvent}
-              src={race?.photo}
-              alt="car&event"
-            />
-          )}
-        </div>
-        <div className={style.title}>
-          {race.title} {race.date}
-        </div>
-      </div>
-      <button type="button" onClick={deleteRace}>
-        удалить
-      </button>
-    </div>
+    <tr>
+      <td>{race.title}</td>
+      <td>{race.date}</td>
+      <td>
+        {race.photo && (
+          <img className={style.photoEvent} src={race?.photo} alt="car&event" />
+        )}
+      </td>
+      <td>
+        <button type="button" onClick={deleteRace}>
+          удалить
+        </button>
+      </td>
+      <td>
+        <button type="button" onClick={() => navigate(`/lk/race/${race.id}`)}>
+          окрыть
+        </button>
+      </td>
+    </tr>
   );
 }
 

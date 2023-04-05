@@ -38,7 +38,7 @@ export default function FormAddRace(): JSX.Element {
           onChange={(e) => setPhoto(e.target.value)}
           value={photo}
         />
-        <input
+        <textarea
           placeholder="Описание"
           name="description"
           onChange={(e) => setDescription(e.target.value)}

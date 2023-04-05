@@ -1,21 +1,15 @@
 import React, { useEffect } from 'react';
+import CircularProgress from '@mui/material/CircularProgress';
 import { useSelector } from 'react-redux';
 import Stack from '@mui/material/Stack';
-import CircularProgress from '@mui/material/CircularProgress';
 import { RootState, useAppDispatch } from '../../store';
 import { initRace } from '../Calendar/raceSlice';
-import Contacts from '../contacts/Contacts';
-import ScoringGroups from '../ScoringGroups/ScoringGroups';
-import CalendarCard from './CalendarCard';
-import Stack from '@mui/material/Stack';
-import CircularProgress from '@mui/material/CircularProgress';
+// import Contacts from '../contacts/Contacts';
+// import ScoringGroups from '../ScoringGroups/ScoringGroups';
+// import CalendarCard from './CalendarCard';
 import './MainCalendar.css';
-import Stack from '@mui/material/Stack';
-import CircularProgress from '@mui/material/CircularProgress';
-
 
 function TimeBeforeRace(): JSX.Element {
-
   const { racesArr, error } = useSelector((store: RootState) => store.race);
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -26,7 +20,7 @@ function TimeBeforeRace(): JSX.Element {
 
   const arrRevers = arr.map((el) => el.split('.').reverse().join('.')); // переворачиваем даты в массиве
   const sortDate = arrRevers.sort(
-    (a, b) => new Date(a).getTime() - new Date(b).getTime() // сортируем перевернутые
+    (a, b) => new Date(a).getTime() - new Date(b).getTime(), // сортируем перевернутые
   );
 
   const regularDat = sortDate.map((el) => Number(el.replace(/[\s.-]/g, ''))); // убрали лишние знаки
@@ -47,39 +41,27 @@ function TimeBeforeRace(): JSX.Element {
 
   return (
     <div className="cont">
+      {error ? (
+        <span>
+          {' '}
+          <Stack sx={{ color: 'grey.500' }} spacing={2} direction="row">
+            <CircularProgress
+              // color="secondary"
+              sx={{ color: 'black' }}
+            />
+          </Stack>
+        </span>
+      ) : (
+        <h1>Ближайший этап: {actualDate}</h1>
+      )}
 
-      {error ?  <span>
-        {' '}
-        <Stack
-          sx={{ color: 'grey.500' }}
-          spacing={2}
-          direction="row"
-        >
-          <CircularProgress 
-          // color="secondary" 
-          sx={{color:'black' }}
-          />
-        </Stack>
-      </span>:<h1>Ближайший этап: {actualDate}</h1>}
-      
-      <div className="container">
+      {/* <div className="container">
         {racesArr.length > 0
-          ? racesArr.map((race) => (
-              <CalendarCard
-                race={race}
-                key={race.id}
-              />
-            ))
+          ? racesArr.map((race) => <CalendarCard race={race} key={race.id} />)
           : null}
-      </div>
-    
-    
-      
-    
-
+      </div> */}
     </div>
   );
 }
 
 export default TimeBeforeRace;
-

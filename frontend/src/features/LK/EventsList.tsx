@@ -6,16 +6,22 @@ import EventCard from './EventCard';
 
 function EventsList(): JSX.Element {
   const { racesArr } = useSelector((store: RootState) => store.lk);
-  console.log(racesArr, '00000000s');
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(initRace());
   }, []);
   return (
     <div>
-      {racesArr.map((race) => (
-        <EventCard race={race} key={race.id} />
-      ))}
+      <table>
+        <tr>
+          <th>Название</th>
+          <th>Дата</th>
+          <th>Что-то</th>
+        </tr>
+        {racesArr.map((race) => (
+          <EventCard race={race} key={race.id} />
+        ))}
+      </table>
     </div>
   );
 }
