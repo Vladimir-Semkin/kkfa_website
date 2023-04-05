@@ -5,6 +5,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const sessionConfig = require('./config/session');
+const fileUpload = require('express-fileupload');
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(cookieParser());
 app.use(session(sessionConfig));
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(fileUpload());
 
 const indexRoute = require('./routes/index.route');
 

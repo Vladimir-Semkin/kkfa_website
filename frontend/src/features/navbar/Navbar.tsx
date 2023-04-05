@@ -16,7 +16,6 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../store';
 import { logoutAdmin } from '../../Admin/types/auth.slice';
-
 // import { Link } from '@mui/material';
 
 const pages = ['Фотогалерея', 'Календарь', 'Документы'];
@@ -25,11 +24,12 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 function NavBar(): JSX.Element {
   const dispatch = useAppDispatch();
   const { admin } = useSelector((store: RootState) => store.auth);
+
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null
+    null,
   );
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
-    null
+    null,
   );
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>): void => {
     setAnchorElNav(event.currentTarget);
@@ -118,15 +118,13 @@ function NavBar(): JSX.Element {
                 <Link to="/lk">личный кабинет</Link>
               </div>
               <div>
-                <Link
-                  to="/"
-                  onClick={() => dispatch(logoutAdmin())}
-                >
+                <Link to="/" onClick={() => dispatch(logoutAdmin())}>
                   выход
                 </Link>
               </div>
             </>
           )}
+
 
           <Button
             onClick={() => navigate('/docs')}
@@ -145,6 +143,7 @@ function NavBar(): JSX.Element {
             style={{ color: 'white' }}
           >
             time-attack
+
           </Button>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
@@ -176,10 +175,7 @@ function NavBar(): JSX.Element {
             onClose={handleCloseUserMenu}
           >
             {settings.map((setting) => (
-              <MenuItem
-                key={setting}
-                onClick={handleCloseUserMenu}
-              >
+              <MenuItem key={setting} onClick={handleCloseUserMenu}>
                 <Typography textAlign="center">{setting}</Typography>
               </MenuItem>
             ))}

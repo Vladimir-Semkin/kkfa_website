@@ -6,6 +6,7 @@ import EventCard from './EventCard';
 
 function EventsList(): JSX.Element {
   const { racesArr } = useSelector((store: RootState) => store.lk);
+  console.log(racesArr, '00000000s');
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(initRace());

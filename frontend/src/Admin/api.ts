@@ -14,7 +14,7 @@ export const login = async (obj: Admin): Promise<Admin | Message> => {
 };
 
 export const session = async (): Promise<Admin | Message> => {
-  const res = await fetch('api/auth/verification', { credentials: 'include' });
+  const res = await fetch('/api/auth/verification', { credentials: 'include' });
   if (!res.ok) {
     const { message } = await res.json();
     throw message;
@@ -23,7 +23,7 @@ export const session = async (): Promise<Admin | Message> => {
 };
 
 export const logout = async (): Promise<Message> => {
-  const res = await fetch('api/auth/logout', { credentials: 'include' });
+  const res = await fetch('/api/auth/logout', { credentials: 'include' });
   if (!res.ok) {
     const { message } = await res.json();
     throw message;

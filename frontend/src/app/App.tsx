@@ -6,15 +6,12 @@ import Calendar from '../features/Calendar/Calendar';
 import NavBar from '../features/navbar/Navbar';
 import RegistrationForm from '../features/RegistrationForm';
 import AdminForm from '../Admin/AdminForm';
-
 import { useAppDispatch } from '../store';
 import { verificationAdmin } from '../Admin/types/auth.slice';
-
 import Document from '../features/documents/Documents';
 // import AdminPage from '../features/adminPage/AdminPage';
 import LK from '../features/LK/LK';
 import EventParams from '../features/LK/EventParams';
-
 import MainCalendar from '../features/MainPage/MainCalendar';
 import TimeAttack from '../features/adoutTimeAttack/TimeAttack';
 
@@ -28,8 +25,8 @@ function App(): JSX.Element {
   return (
     <>
       <NavBar />
-
       <Routes>
+
         <Route
           path="/"
           element={<MainCalendar />}
@@ -63,10 +60,7 @@ function App(): JSX.Element {
           path="/docs"
           element={<Document />}
         />
-        <Route
-          path="/lk"
-          element={<LK />}
-        />
+   
         <Route
           path="/lk/race/:id"
           element={<EventParams />}
@@ -75,6 +69,7 @@ function App(): JSX.Element {
           path="/docs"
           element={<Document />}
         />
+
       </Routes>
     </>
   );
