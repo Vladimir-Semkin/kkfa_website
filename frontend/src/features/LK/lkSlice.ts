@@ -4,18 +4,23 @@ import * as api from './api';
 
 const initialState: State = {
   racesArr: [],
+  photoArr: [],
   error: undefined,
 };
 
 export const initRace = createAsyncThunk('race/init', () => api.initRace());
 export const addRace = createAsyncThunk('race/add', (action: Race) =>
-  api.addRace(action),
+  api.addRace(action)
 );
 export const delRace = createAsyncThunk('race/delete', (action: IdRace) =>
-  api.delRace(action),
+  api.delRace(action)
 );
 export const updRace = createAsyncThunk('race/update', (action: Race) =>
-  api.updRace(action),
+  api.updRace(action)
+);
+
+export const photoRouter = createAsyncThunk('photo/add', (action: any) =>
+  api.photoRouter(action)
 );
 
 const lkSlice = createSlice({
@@ -38,22 +43,24 @@ const lkSlice = createSlice({
       })
       .addCase(delRace.fulfilled, (state, action) => {
         state.racesArr = state.racesArr.filter(
-          (race) => race.id !== Number(action.payload),
+          (race) => race.id !== Number(action.payload)
         );
       })
       .addCase(delRace.rejected, (state, action) => {
         state.error = action.error.message;
       })
       .addCase(updRace.fulfilled, (state, action) => {
-        console.log(action);
-
-        state.racesArr.map((race) =>
-          race.id === Number(action.payload)
-            ? { ...race, race: action.payload }
-            : race,
+        state.racesArr = state.racesArr.map((race) =>
+          race.id === action.payload.id ? action.payload : race
         );
       })
       .addCase(updRace.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(photoRouter.fulfilled, (state, action) => {
+        state.photoArr = action.payload;
+      })
+      .addCase(photoRouter.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },

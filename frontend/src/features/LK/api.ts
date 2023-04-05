@@ -26,13 +26,24 @@ export const delRace = async (id: IdRace): Promise<number | Message> => {
   }
   return res.json();
 };
-export const updRace = async (obj: Race): Promise<Race | Message> => {
-  console.log(obj, 'fetch');
-  
+export const updRace = async (obj: Race): Promise<Race> => {
   const res = await fetch(`/api/lk/${obj.id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(obj),
+  });
+  if (!res.ok) {
+    const { message } = await res.json();
+    throw message;
+  }
+  return res.json();
+};
+
+export const photoRouter = async (photoArr: any): Promise<string[]> => {
+  console.log(photoArr);
+  const res = await fetch('/api/photo', {
+    method: 'PUT',
+    body: photoArr,
   });
   if (!res.ok) {
     const { message } = await res.json();

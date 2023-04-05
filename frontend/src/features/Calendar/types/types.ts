@@ -2,6 +2,8 @@ export type Race = {
   id?: number;
   title: string;
   date: string;
+  photo: string;
+  description: string;
   'Participants.raceEventId'?: number;
 };
 export type State = {
