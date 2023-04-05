@@ -4,7 +4,6 @@ const { RaceEvent, Participant, Application } = require('../db/models');
 router.get('/', async (req, res) => {
   try {
     const results = await RaceEvent.findAll({
-      include: { model: Participant },
       raw: true,
     });
     res.status(200).json(results);

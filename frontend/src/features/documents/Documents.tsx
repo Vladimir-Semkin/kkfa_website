@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 
-import { Button } from '@mui/material';
-
 import React from 'react';
+import { Button } from '@mui/material';
 import './Document.css';
+
 function Document(): JSX.Element {
   return (
     <div className="container">
@@ -38,7 +38,7 @@ function Document(): JSX.Element {
         >
           Скачать
         </Button>
-      </div> 
+      </div>
     </div>
   );
 }

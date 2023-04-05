@@ -1,4 +1,5 @@
 import React from 'react';
+
 import './AboutKkfa.css'
 function AboutKkfa():JSX.Element {
   return (
@@ -10,6 +11,7 @@ function AboutKkfa():JSX.Element {
       автоспортивных мероприятий различного уровня на протяжении 15 лет. В том
       числе и любительских соревнований по дисциплине time-attack в которых
       может принять участие практически любой желающий.</div>
+
     </div>
   );
 }

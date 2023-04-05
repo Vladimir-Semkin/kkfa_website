@@ -23,7 +23,7 @@ export default function RegistrationForm(): JSX.Element {
   });
 
   return (
-    <div className={style.formContainer}>
+    <div className={style.formContainer} >
       <form className={style.form} onSubmit={onSubmit}>
         <div>
           <p>Имя:</p>
