@@ -10,8 +10,12 @@ import CalendarCard from './CalendarCard';
 import Stack from '@mui/material/Stack';
 import CircularProgress from '@mui/material/CircularProgress';
 import './MainCalendar.css';
+import Stack from '@mui/material/Stack';
+import CircularProgress from '@mui/material/CircularProgress';
 
-function MainCalendar(): JSX.Element {
+
+function TimeBeforeRace(): JSX.Element {
+
   const { racesArr, error } = useSelector((store: RootState) => store.race);
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -43,6 +47,7 @@ function MainCalendar(): JSX.Element {
 
   return (
     <div className="cont">
+
       {error ?  <span>
         {' '}
         <Stack
@@ -67,12 +72,14 @@ function MainCalendar(): JSX.Element {
             ))
           : null}
       </div>
-      <div className="slider">
-        <ScoringGroups />
-        <Contacts />
-      </div>
+    
+    
+      
+    
+
     </div>
   );
 }
 
-export default MainCalendar;
+export default TimeBeforeRace;
+

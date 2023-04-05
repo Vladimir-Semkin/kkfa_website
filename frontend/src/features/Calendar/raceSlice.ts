@@ -25,10 +25,16 @@ const raceSlice = createSlice({
       .addCase(initRace.fulfilled, (state, action) => {
         state.racesArr = action.payload;
         state.error = undefined;
+
       })
       .addCase(initRace.pending, (state, action) => {
         state.error = 'Загрузка...';
+
       })
+      .addCase(initRace.pending, (state, action) => {
+        state.error = 'загрузка';
+      })
+
       .addCase(initRace.rejected, (state, action) => {
         state.error = action.error.message;
       });
