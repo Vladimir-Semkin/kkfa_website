@@ -13,6 +13,7 @@ import Document from '../features/documents/Documents';
 import LK from '../features/LK/LK';
 import EventParams from '../features/LK/EventParams';
 import MainCalendar from '../features/MainPage/MainCalendar';
+import TimeAttack from '../features/adoutTimeAttack/TimeAttack';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -25,15 +26,50 @@ function App(): JSX.Element {
     <>
       <NavBar />
       <Routes>
-        <Route path="/" element={<MainCalendar />} />
-        <Route path="/registration" element={<RegistrationForm />} />
-        <Route path="/admin" element={<AdminForm />} />
-        <Route path="/calendar" element={<Calendar />} />
-        <Route path="/result/:id" element={<ResultList />} />
-        <Route path="/lk" element={<LK />} />
-        <Route path="/docs" element={<Document />} />
-        <Route path="/lk/race/:id" element={<EventParams />} />
-        <Route path="/docs" element={<Document />} />
+
+        <Route
+          path="/"
+          element={<MainCalendar />}
+        />
+
+        <Route
+          path="/registration"
+          element={<RegistrationForm />}
+        />
+        <Route
+          path="/abouttimeattack"
+          element={<TimeAttack />}
+        />
+        <Route
+          path="/admin"
+          element={<AdminForm />}
+        />
+        <Route
+          path="/calendar"
+          element={<Calendar />}
+        />
+        <Route
+          path="/result/:id"
+          element={<ResultList />}
+        />
+        <Route
+          path="/lk"
+          element={<LK />}
+        />
+        <Route
+          path="/docs"
+          element={<Document />}
+        />
+   
+        <Route
+          path="/lk/race/:id"
+          element={<EventParams />}
+        />
+        <Route
+          path="/docs"
+          element={<Document />}
+        />
+
       </Routes>
     </>
   );
