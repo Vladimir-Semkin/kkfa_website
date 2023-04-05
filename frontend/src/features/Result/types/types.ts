@@ -7,6 +7,7 @@ export type Result = {
   'Participants.Results.time': string;
   'Participants.Results.attempt': string;
   'Participants.raceEventId': number;
+  'Participants.Results.id': number;
 };
 export type State = {
   resultsArr: Result[];
