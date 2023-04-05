@@ -26,13 +26,24 @@ export default function ScoringGroups() {
         modules={[Pagination, Navigation]}
         className="mySwiper"
       >
-        <SwiperSlide><img src='/sliderImage/IMG_9123.jpg'/></SwiperSlide>
-        <SwiperSlide><img src='/sliderImage/IMG_9481.jpg'/></SwiperSlide>
-        <SwiperSlide><img src='/sliderImage/IMG_8944.jpg'/></SwiperSlide>
-        <SwiperSlide><img src='/sliderImage/IMG_0392.jpg'/></SwiperSlide>
-        <SwiperSlide><img src='/sliderImage/IMG_9903.jpg'/></SwiperSlide>
-        <SwiperSlide><img src='/sliderImage/IMG_0566.jpg'/></SwiperSlide>
-     
+        <SwiperSlide>
+          <img src="/sliderImage/IMG_9123.jpg" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="/sliderImage/IMG_9481.jpg" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="/sliderImage/IMG_8944.jpg" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="/sliderImage/IMG_0392.jpg" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="/sliderImage/IMG_9903.jpg" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="/sliderImage/IMG_0566.jpg" />
+        </SwiperSlide>
       </Swiper>
     </>
   );

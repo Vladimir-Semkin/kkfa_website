@@ -10,6 +10,7 @@ import { Race } from '../Calendar/types/types';
 
 function CalendarCard({ race }: { race: Race }): JSX.Element {
   const navigate = useNavigate();
+ 
   return (
     <Card
       sx={{ maxWidth: 345 }}
@@ -19,7 +20,7 @@ function CalendarCard({ race }: { race: Race }): JSX.Element {
         <CardMedia
           component="img"
           height="140"
-          image="https://avatars.mds.yandex.net/get-altay/5104421/2a00000180478ee6183a7bbd8c5808ffc11d/XXL_height"
+          image={race.photo}
           alt="green iguana"
         />
         <CardContent>
@@ -34,7 +35,7 @@ function CalendarCard({ race }: { race: Race }): JSX.Element {
             variant="body2"
             color="text.secondary"
           >
-            {race.date}
+            {race.date.split('-').reverse().join('-')}
           </Typography>
         </CardContent>
       </CardActionArea>

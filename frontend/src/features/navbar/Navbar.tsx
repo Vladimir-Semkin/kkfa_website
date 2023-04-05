@@ -51,23 +51,6 @@ function NavBar(): JSX.Element {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          {/* <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography> */}
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -149,7 +132,19 @@ function NavBar(): JSX.Element {
             onClick={() => navigate('/docs')}
             style={{ color: 'white' }}
           >
-            кнопка
+            Документы
+          </Button>
+          <Button
+            onClick={() => navigate('/')}
+            style={{ color: 'white' }}
+          >
+            На главную
+          </Button>
+          <Button
+            onClick={() => navigate('/abouttimeattack')}
+            style={{ color: 'white' }}
+          >
+            time-attack
           </Button>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
@@ -163,25 +158,6 @@ function NavBar(): JSX.Element {
               </Button>
             ))}
           </Box>
-
-          {/* <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-
-              <IconButton
-                onClick={handleOpenUserMenu}
-                sx={{ p: 0 }}
-              >
-                {/* <Avatar
-                  alt="Remy Sharp"
-                  src="/static/images/avatar/2.jpg"
-                /> */}
-          {/* </IconButton> */}
-          {/* </Tooltip> */}
 
           <Menu
             sx={{ mt: '45px' }}

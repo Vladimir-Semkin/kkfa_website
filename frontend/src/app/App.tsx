@@ -16,6 +16,7 @@ import LK from '../features/LK/LK';
 import EventParams from '../features/LK/EventParams';
 
 import MainCalendar from '../features/MainPage/MainCalendar';
+import TimeAttack from '../features/adoutTimeAttack/TimeAttack';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -37,6 +38,10 @@ function App(): JSX.Element {
         <Route
           path="/registration"
           element={<RegistrationForm />}
+        />
+        <Route
+          path="/abouttimeattack"
+          element={<TimeAttack />}
         />
         <Route
           path="/admin"
