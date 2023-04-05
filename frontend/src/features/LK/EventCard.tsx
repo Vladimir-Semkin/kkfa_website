@@ -12,9 +12,16 @@ function EventCard({ race }: { race: Race }): JSX.Element {
   };
   return (
     <div>
-      <div
-        onClick={() => navigate(`/lk/race/${race.id}`)}
-      >
+      <div onClick={() => navigate(`/lk/race/${race.id}`)}>
+        <div>
+          {race.photo && (
+            <img
+              style={{ maxWidth: '300px', borderRadius: '10px', margin: '20px' }}
+              src={race?.photo}
+              alt="car&event"
+            />
+          )}
+        </div>
         {race.title} {race.date}
       </div>
       <button type="button" onClick={deleteRace}>

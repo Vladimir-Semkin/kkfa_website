@@ -38,3 +38,15 @@ export const updRace = async (obj: Race): Promise<Race | Message> => {
   }
   return res.json();
 };
+
+export const photoRouter = async (photoArr: any): Promise<string[]> => {
+  const res = await fetch('/api/photo', {
+    method: 'PUT',
+    body: photoArr,
+  });
+  if (!res.ok) {
+    const { message } = await res.json();
+    throw message;
+  }
+  return res.json();
+};

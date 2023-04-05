@@ -2,21 +2,37 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { RootState, useAppDispatch } from '../../store';
-import { updRace } from './lkSlice';
+import { photoRouter, updRace } from './lkSlice';
+import style from './EventParams.module.css';
 
 function EventParams(): JSX.Element {
   const { id } = useParams();
   const { racesArr } = useSelector((store: RootState) => store.lk);
-
   const race = racesArr.find((el) => el.id === Number(id));
   const [title, setTitle] = useState(race?.title);
   const [date, setDate] = useState(race?.date);
+  const [photo, setPhoto] = useState(race?.photo);
+  const [description, setDescription] = useState(race?.description);
+
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
   function update(e: React.FormEvent<HTMLFormElement>): void {
     e.preventDefault();
-    dispatch(updRace({ id: Number(id), title, date }));
+    dispatch(updRace({ id: Number(id), title, date, photo, description }));
   }
+
+  const sendFiles = async (e: any): Promise<any> => {
+    const picturesData = [...e.target.files];
+    try {
+      const data = new FormData();
+      picturesData.forEach((img) => {
+        data.append('homesImg', img);
+      });
+      dispatch(photoRouter(data));
+      // eslint-disable-next-line no-empty
+    } catch (error) {}
+  };
 
   return (
     <div className="col s3 ">
@@ -26,12 +42,67 @@ function EventParams(): JSX.Element {
           <p>Участники</p>
           <p>Результаты</p>
           <form onSubmit={update}>
+            <p>Название:</p>
             <input onChange={(e) => setTitle(e.target.value)} value={title} />
-            <input onChange={(e) => setDate(e.target.value)} value={date} />
-            <button type="submit">сохранить изменения</button>
+
+            <p>Дата:</p>
+            <input
+              type="date"
+              onChange={(e) => setDate(e.target.value)}
+              value={date}
+            />
+
+            <p>Фото:</p>
+            <input onChange={(e) => setPhoto(e.target.value)} value={photo} />
+
+            <div>
+              {race.photo && (
+                <img
+                  style={{ width: '200px' }}
+                  src={race.photo}
+                  alt="cardPhoto"
+                />
+              )}
+            </div>
+
+            <p>Описание:</p>
+            <input
+              onChange={(e) => setDescription(e.target.value)}
+              value={description}
+            />
+            <div>
+              <button type="submit">сохранить изменения</button>
+            </div>
           </form>
-          <p>Добавить фото</p>
-          <p>Ссылка на фото</p>
+
+          <div>{}</div>
+
+          <div style={{ margin: '40px' }}>
+            <form
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+              }}
+            >
+              <input
+                className={style.hidden}
+                type="file"
+                multiple
+                onChange={sendFiles}
+              />
+            <button
+              style={{
+                backgroundColor: 'green',
+                color: 'white',
+                width: '115px',
+              }}
+              type="submit"
+            >
+              Добавить фотографии
+            </button>
+            </form>
+          </div>
         </div>
       )}
       <button type="button" onClick={() => navigate(-1)}>

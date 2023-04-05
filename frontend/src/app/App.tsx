@@ -8,12 +8,12 @@ import AdminForm from '../features/Admin/AdminForm';
 import { useAppDispatch } from '../store';
 import { verificationAdmin } from '../features/Admin/types/auth.slice';
 import Document from '../features/Documents/Documents';
-// import AdminPage from '../features/adminPage/AdminPage';
 import LK from '../features/LK/LK';
 import EventParams from '../features/LK/EventParams';
 import Main from '../features/Main/Main';
 import RaceParams from '../features/RaceParams/RaceParams';
 import ApplicationList from '../features/Application/ApplicationList';
+import TimeAttack from '../features/adoutTimeAttack/TimeAttack';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -35,6 +35,7 @@ function App(): JSX.Element {
         <Route path="/race/:id" element={<RaceParams />} />
         <Route path="/race/registration/:id" element={<RegistrationForm />} />
         <Route path="/docs" element={<Document />} />
+        <Route path="/abouttimeattack" element={<TimeAttack />} />
       </Routes>
     </>
   );

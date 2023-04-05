@@ -12,13 +12,16 @@ router.get('/', async (req, res) => {
     res.status(500).json(message);
   }
 });
+
 router.post('/', async (req, res) => {
   try {
-    const { title, date } = req.body;
+    const { title, date, photo, description } = req.body;
     if (title && date) {
       const race = await RaceEvent.create({
         title,
         date,
+        photo,
+        description,
       });
       res.status(201).json(race);
     }
@@ -26,6 +29,7 @@ router.post('/', async (req, res) => {
     res.status(500).json({ message });
   }
 });
+
 router.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -37,15 +41,18 @@ router.delete('/:id', async (req, res) => {
     res.status(500).json({ message });
   }
 });
+
 router.put('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const { title, date } = req.body;
+    const { title, date, photo, description } = req.body;
     if (title || date) {
       const race = await RaceEvent.findOne({ where: Number(id) });
       console.log(race, 'back');
       race.title = title;
       race.date = date;
+      race.photo = photo;
+      race.description = description;
       race.save();
       res.status(201).json(race);
     }
