@@ -1,0 +1,15 @@
+.title {
+  cursor: pointer;
+}
+
+.title:hover {
+  color: rgb(219, 10, 10);
+
+}
+
+.photoEvent {
+  width: 200px;
+  height: 100px;
+  border-radius: 10px;
+  margin: 20px;
+}

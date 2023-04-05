@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../store';
 import { delRace } from './lkSlice';
 import { Race } from './types/types';
+import style from './EventCard.module.css';
 
 function EventCard({ race }: { race: Race }): JSX.Element {
   const dispatch = useAppDispatch();
@@ -16,13 +17,15 @@ function EventCard({ race }: { race: Race }): JSX.Element {
         <div>
           {race.photo && (
             <img
-              style={{ maxWidth: '300px', borderRadius: '10px', margin: '20px' }}
+              className={style.photoEvent}
               src={race?.photo}
               alt="car&event"
             />
           )}
         </div>
-        {race.title} {race.date}
+        <div className={style.title}>
+          {race.title} {race.date}
+        </div>
       </div>
       <button type="button" onClick={deleteRace}>
         удалить
