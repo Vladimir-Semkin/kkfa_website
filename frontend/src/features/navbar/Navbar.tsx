@@ -11,11 +11,11 @@ import Button from '@mui/material/Button';
 // import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../store';
 import { logoutAdmin } from '../Admin/types/auth.slice';
+import style from './Navbar.module.css';
 // import { Link } from '@mui/material';
 
 const pages = ['Фотогалерея', 'Календарь', 'Документы'];
@@ -26,10 +26,10 @@ function NavBar(): JSX.Element {
   const { admin } = useSelector((store: RootState) => store.auth);
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null,
+    null
   );
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
-    null,
+    null
   );
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>): void => {
     setAnchorElNav(event.currentTarget);
@@ -46,11 +46,12 @@ function NavBar(): JSX.Element {
     setAnchorElUser(null);
   };
   const navigate = useNavigate();
+
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -112,27 +113,26 @@ function NavBar(): JSX.Element {
           {'id' in admin && (
             <>
               <div style={{ marginRight: '10px' }}>
-                <Link to="/lk">личный кабинет</Link>
+                <Link className={style.link} to="/lk">
+                  ЛИЧНЫЙ КАБИНЕТ
+                </Link>
               </div>
               <div>
-                <Link to="/" onClick={() => dispatch(logoutAdmin())}>
-                  выход
+                <Link
+                  className={style.link}
+                  to="/"
+                  onClick={() => dispatch(logoutAdmin())}
+                >
+                  ВЫХОД
                 </Link>
               </div>
             </>
           )}
 
-
-          <Button
-            onClick={() => navigate('/docs')}
-            style={{ color: 'white' }}
-          >
+          <Button onClick={() => navigate('/docs')} style={{ color: 'white' }}>
             Документы
           </Button>
-          <Button
-            onClick={() => navigate('/')}
-            style={{ color: 'white' }}
-          >
+          <Button onClick={() => navigate('/')} style={{ color: 'white' }}>
             На главную
           </Button>
           <Button
@@ -140,7 +140,6 @@ function NavBar(): JSX.Element {
             style={{ color: 'white' }}
           >
             time-attack
-
           </Button>
           <Button
             onClick={() => navigate('/calendar')}
