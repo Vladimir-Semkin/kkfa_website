@@ -6,7 +6,8 @@ import { updRace } from './lkSlice';
 
 function EventParams(): JSX.Element {
   const { id } = useParams();
-  const { racesArr } = useSelector((store: RootState) => store.race);
+  const { racesArr } = useSelector((store: RootState) => store.lk);
+
   const race = racesArr.find((el) => el.id === Number(id));
   const [title, setTitle] = useState(race?.title);
   const [date, setDate] = useState(race?.date);
@@ -21,7 +22,7 @@ function EventParams(): JSX.Element {
     <div className="col s3 ">
       {race && (
         <div className="card-image">
-          <p>Заявки</p>
+          <div onClick={() => navigate(`/lk/race/${id}/application`)}>Заявки</div>
           <p>Участники</p>
           <p>Результаты</p>
           <form onSubmit={update}>

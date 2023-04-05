@@ -15,7 +15,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../store';
-import { logoutAdmin } from '../../Admin/types/auth.slice';
+import { logoutAdmin } from '../Admin/types/auth.slice';
 // import { Link } from '@mui/material';
 
 const pages = ['Фотогалерея', 'Календарь', 'Документы'];
@@ -99,10 +99,7 @@ function NavBar(): JSX.Element {
               }}
             >
               {pages.map((page) => (
-                <MenuItem
-                  key={page}
-                  onClick={handleCloseNavMenu}
-                >
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -145,7 +142,12 @@ function NavBar(): JSX.Element {
           <Button onClick={() => navigate('/docs')} style={{ color: 'white' }}>
             кнопка
           </Button>
-
+          <Button
+            onClick={() => navigate('/calendar')}
+            style={{ color: 'white' }}
+          >
+            Календарь
+          </Button>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button

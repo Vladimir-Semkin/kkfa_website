@@ -5,10 +5,11 @@ import { RootState, useAppDispatch } from '../../store';
 import ResultCard from './ResultCard';
 import { initResult } from './resultSlice';
 import './ResultList.css';
+import { IdRace } from '../Calendar/types/types';
 
-function ResultList(): JSX.Element {
+function ResultList({ id }: { id: IdRace }): JSX.Element {
   const { resultsArr } = useSelector((store: RootState) => store.result);
-  const { id } = useParams();
+  // const { id } = useParams();
   const resultsArrId = resultsArr.filter(
     (resultObj) => resultObj['Participants.raceEventId'] === Number(id),
   );
@@ -19,39 +20,27 @@ function ResultList(): JSX.Element {
   }, []);
 
   return (
-    <>
-      <h1>Календарь</h1>
-      <h2>15 июля 2022</h2>
-      <div
-        style={{
-          display: 'inline-flex',
-        }}
-      >
-        <div>
-          <h3>Результаты</h3>
-          <div>
-            <table>
-              <caption>Результаты чемпионата, допустим</caption>
-              <tr>
-                <th>стартовый номер</th>
-                <th>ФИО</th>
-                <th>время</th>
-                <th>попытка</th>
-              </tr>
-              {resultsArrId.length > 0
-                ? resultsArrId.map((result) => (
-                    <ResultCard result={result} key={result.id} />
-                  ))
-                : null}
-            </table>
-          </div>
-        </div>
-        <div>
-          <h3>Фотографии с места событий</h3>
-          {/* <div></div> */}
-        </div>
+    <div>
+      <h3>Результаты</h3>
+      <div>
+        <table>
+          <caption>Результаты чемпионата, допустим</caption>
+          <tr>
+            <th>стартовый номер</th>
+            <th>ФИО</th>
+            <th>время</th>
+            <th>попытка</th>
+          </tr>
+          <tr>
+            {resultsArrId.length > 0
+              ? resultsArrId.map((result) => (
+                  <ResultCard result={result} key={result.id} />
+                ))
+              : null}
+          </tr>
+        </table>
       </div>
-    </>
+    </div>
   );
 }
 

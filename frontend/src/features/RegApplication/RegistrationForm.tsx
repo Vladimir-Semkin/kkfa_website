@@ -3,13 +3,14 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import type {} from 'redux-thunk/extend-redux';
+import { useParams } from 'react-router-dom';
 import style from './RegistrationForm.module.css';
-import { Application } from './Participants/types/types';
-import { addApplication } from './Participants/applicationSlice';
+import { Application } from './types/types';
+import { addApplication } from './applicationSlice';
 
 export default function RegistrationForm(): JSX.Element {
   const dispatch = useDispatch();
-
+  const { id } = useParams();
   const {
     register,
     formState: { errors },
@@ -17,6 +18,7 @@ export default function RegistrationForm(): JSX.Element {
   } = useForm<Application>();
 
   const onSubmit = handleSubmit((data) => {
+    data.raceEventId = Number(id);
     dispatch(addApplication(data));
   });
 
@@ -465,15 +467,6 @@ export default function RegistrationForm(): JSX.Element {
             className={style.wind}
             {...register('startNomer')}
             placeholder="Стартовый номер (от 1 до 99) (желаемый!* будет подтвержден при регистрации)"
-          />
-        </div>
-
-        <div>
-          <p>Название соревнования????????</p>
-          <input
-            className={style.wind}
-            {...register('raceEventId')}
-            placeholder="race"
           />
         </div>
 

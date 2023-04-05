@@ -13,7 +13,7 @@ function EventCard({ race }: { race: Race }): JSX.Element {
   return (
     <div>
       <div
-        onClick={() => navigate(`/lk/race/${race['Participants.raceEventId']}`)}
+        onClick={() => navigate(`/lk/race/${race.id}`)}
       >
         {race.title} {race.date}
       </div>
