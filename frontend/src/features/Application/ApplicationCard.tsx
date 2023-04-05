@@ -1,24 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
+// import { useParams } from 'react-router-dom';
 import { useAppDispatch } from '../../store';
 import { Application } from '../RegApplication/types/types';
-import { addAppInPart } from '../Participant/partSlice';
+import { addAppInPart, delPart } from '../Participant/partSlice';
+import './Application.css';
+import { IdRace } from '../Calendar/types/types';
 
 function ApplicationCard({
   application,
+  id,
 }: {
   application: Application;
+  id: IdRace;
 }): JSX.Element {
+  const [icon, setIcon] = useState(true);
   const dispatch = useAppDispatch();
-
   const pushApplPart = (): void => {
-    dispatch(addAppInPart());
+    setIcon((prev) => !prev);
+    dispatch(addAppInPart({ id, applicationId: application.id }));
+  };
+  const delApplPart = (): void => {
+    setIcon((prev) => !prev);
+    dispatch(delPart({ id, applicationId: application.id }));
   };
   return (
     <tr>
       <td>
-        <button type="submit" onClick={pushApplPart}>
-          +
-        </button>
+        {icon ? (
+          <button className="icon-add" type="submit" onClick={pushApplPart} />
+        ) : (
+          <button className="icon-del" type="submit" onClick={delApplPart} />
+        )}
       </td>
       <td>{application.familiya}</td>
       <td>{application.name}</td>

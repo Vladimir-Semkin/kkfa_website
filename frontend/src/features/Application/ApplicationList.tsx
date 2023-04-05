@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import { RootState, useAppDispatch } from '../../store';
 import { initApplication } from './applSlice';
-import ApplicationCard from './ApplicarionCard';
+import ApplicationCard from './ApplicationCard';
 
 function ApplicationList(): JSX.Element {
   const { id } = useParams();
@@ -17,7 +17,7 @@ function ApplicationList(): JSX.Element {
   }, []);
 
   return (
-    <div className="container">
+    <div style={{ width: '100vw' }}>
       <table>
         <tr>
           <th />
@@ -48,7 +48,11 @@ function ApplicationList(): JSX.Element {
         </tr>
         {applicationsArr.length > 0
           ? applicationsArr.map((application) => (
-              <ApplicationCard key={application.id} application={application} />
+              <ApplicationCard
+                key={application.id}
+                application={application}
+                id={Number(id)}
+              />
             ))
           : null}
       </table>

@@ -4,7 +4,6 @@ const { RaceEvent, Participant, Application } = require('../db/models');
 router.get('/', async (req, res) => {
   try {
     const results = await RaceEvent.findAll({
-      include: { model: Participant },
       raw: true,
     });
     res.status(200).json(results);
@@ -75,13 +74,33 @@ router.get('/race/:id/application', async (req, res) => {
 });
 router.post('/race/:id/application', async (req, res) => {
   try {
-    const { title, date } = req.body;
-    if (title && date) {
-      const race = await RaceEvent.create({
-        title,
-        date,
+    const { id, applicationId } = req.body;
+    const thisApplication = await Application.findAll({
+      where: { id: Number(applicationId), raceEventId: Number(id) },
+      raw: true,
+    });
+
+    const participant = await thisApplication.map(async (apl) => {
+      await Participant.create({
+        applicationId: apl.id,
+        raceEventId: apl.raceEventId,
+        groupListId: apl.groupListId,
+        startNomer: apl.groupListId,
       });
-      res.status(201).json(race);
+    });
+    res.status(201).json(participant);
+  } catch ({ message }) {
+    res.status(500).json({ message });
+  }
+});
+router.delete('/race/:id/application/:aplId', async (req, res) => {
+  try {
+    const { id, aplId } = req.params;
+    const result = await Participant.destroy({
+      where: { applicationId: Number(aplId) },
+    });
+    if (result) {
+      res.status(200).json(id);
     }
   } catch ({ message }) {
     res.status(500).json({ message });
