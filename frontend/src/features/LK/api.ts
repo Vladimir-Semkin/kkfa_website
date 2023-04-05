@@ -39,7 +39,9 @@ export const updRace = async (obj: Race): Promise<Race> => {
   return res.json();
 };
 
-export const photoRouter = async (photoArr: any): Promise<string[]> => {
+export const photoRouter = async (
+  photoArr: any
+): Promise<string[]> => {
   const res = await fetch('/api/photo', {
     method: 'PUT',
     body: photoArr,
