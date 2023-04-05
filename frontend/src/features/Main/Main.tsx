@@ -1,4 +1,5 @@
 import React from 'react';
+import AboutKkfa from '../aboutKkfa/AboutKkfa';
 import Contacts from '../contacts/Contacts';
 import ScoringGroups from '../ScoringGroups/ScoringGroups';
 import RaceList from './RaceList';
@@ -12,6 +13,7 @@ function Main(): JSX.Element {
       <ScoringGroups />
       <Contacts />
       {/* <p></p> */}
+      <AboutKkfa/>
     </>
   );
 }

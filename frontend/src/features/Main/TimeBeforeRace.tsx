@@ -3,9 +3,11 @@ import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../store';
 import { initRace } from '../Calendar/raceSlice';
 import './MainCalendar.css';
+import Stack from '@mui/material/Stack';
+import CircularProgress from '@mui/material/CircularProgress';
 
 function TimeBeforeRace(): JSX.Element {
-  const { racesArr } = useSelector((store: RootState) => store.race);
+  const { racesArr, error } = useSelector((store: RootState) => store.race);
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(initRace());
@@ -36,7 +38,20 @@ function TimeBeforeRace(): JSX.Element {
 
   return (
     <div className="cont">
-      <h1>Ближайший этап: {actualDate}</h1>
+      {error ? (
+        <>
+          {' '}
+          <Stack
+            sx={{ color: 'grey.500' }}
+            spacing={2}
+            direction="row"
+          >
+            <CircularProgress sx={{ color: 'black' }} />
+          </Stack>
+        </>
+      ) : (
+        <h1>Ближайший этап: {actualDate}</h1>
+      )}
     </div>
   );
 }
