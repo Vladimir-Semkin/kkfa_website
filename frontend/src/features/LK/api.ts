@@ -26,7 +26,7 @@ export const delRace = async (id: IdRace): Promise<number | Message> => {
   }
   return res.json();
 };
-export const updRace = async (obj: Race): Promise<Race | Message> => {
+export const updRace = async (obj: Race): Promise<Race> => {
   const res = await fetch(`/api/lk/${obj.id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
