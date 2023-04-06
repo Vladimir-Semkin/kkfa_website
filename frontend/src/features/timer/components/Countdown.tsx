@@ -3,18 +3,20 @@
 import React, { useState, useEffect } from 'react';
 import './timer.scss';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import daysInYear from '../helpers/daysInYear';
 import { RootState, useAppDispatch } from '../../../store';
 import { initRace } from '../../Calendar/raceSlice';
 import CountdownBox from './CountdownBox';
 
 const Countdown = (): JSX.Element => {
-  const { racesArr } = useSelector((store: RootState) => store.race);
+  
+  const { racesArr, error } = useSelector((store: RootState) => store.race);
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(initRace());
   }, []);
-
+  const navigate = useNavigate();
   const arr = racesArr.map((el) => el.date); // достаем из списка событий массив с датами
 
   const arrRevers = arr.map((el) => el.split('.').reverse().join('.')); // переворачиваем даты в массиве
@@ -37,6 +39,7 @@ const Countdown = (): JSX.Element => {
     /(\d{4})(\d{2})(\d{2})/g,
     '$1-$2-$3'
   );
+  const dateForTimerToDay = date.toISOString().split('T')[0];
   let interval: ReturnType<typeof setInterval>;
   const now = new Date();
   const selectedDate = new Date(dateForTimer);
@@ -112,35 +115,52 @@ const Countdown = (): JSX.Element => {
     secondsLeftOutput,
   ]);
 
+  const dateArrMinusOne =
+    arr.findIndex((dateForTimerToDay) => dateForTimerToDay === dateForTimer) -
+    1;
+  //   {!error && console.log(racesArr[dateArrMinusOne].id)}
+  //  const urlIndex = racesArr[dateArrMinusOne]
+  //  console.log(error)
   return (
-    <div className="countdownDiv">
-      <h1 className="countdownH">Ближайшее событие:</h1>
-      <div className="countdown">
-        <CountdownBox
-          left={timeLeft.days}
-          divideBy={daysInSelectedYear}
-          label="Дней"
-        />
-        <div className="vl"></div>
-        <CountdownBox
-          left={timeLeft.hours}
-          divideBy={24}
-          label="Часов"
-        />
-        <div className="vl"></div>
-        <CountdownBox
-          left={timeLeft.minutes}
-          divideBy={60}
-          label="Минут"
-        />
-        <div className="vl"></div>
-        <CountdownBox
-          left={timeLeft.seconds}
-          divideBy={60}
-          label="Секунд"
-        />
-      </div>
-    </div>
+    <>
+      {dateForTimerToDay === arr[dateArrMinusOne] ? (
+        <button onClick={() => navigate('http://localhost:3000/race/')}>
+          кнопка
+        </button>
+      ) : (
+        <>
+          {' '}
+          <div className="countdownDiv">
+            <h1 className="countdownH">Ближайшее событие:</h1>
+            <div className="countdown">
+              <CountdownBox
+                left={timeLeft.days}
+                divideBy={daysInSelectedYear}
+                label="Дней"
+              />
+              <div className="vl" />
+              <CountdownBox
+                left={timeLeft.hours}
+                divideBy={24}
+                label="Часов"
+              />
+              <div className="vl" />
+              <CountdownBox
+                left={timeLeft.minutes}
+                divideBy={60}
+                label="Минут"
+              />
+              <div className="vl" />
+              <CountdownBox
+                left={timeLeft.seconds}
+                divideBy={60}
+                label="Секунд"
+              />
+            </div>
+          </div>
+        </>
+      )}
+    </>
   );
 };
 
