@@ -12,11 +12,9 @@ function Calendar(): JSX.Element {
   }, []);
   return (
     <div>
-      {racesArr.length > 0 ? (
-        racesArr.map((race) => <CalendarRace race={race} key={race.id} />)
-      ) : (
-        null
-      )}
+      {racesArr.length > 0
+        ? racesArr.map((race) => <CalendarRace race={race} key={race.id} />)
+        : null}
     </div>
   );
 }

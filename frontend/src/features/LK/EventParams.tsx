@@ -28,7 +28,6 @@ function EventParams(): JSX.Element {
       const data = new FormData();
       picturesData.forEach((img) => {
         data.append('homesImg', img);
-        // console.log(data);
       });
       data.append('id', String(id));
 
@@ -44,7 +43,9 @@ function EventParams(): JSX.Element {
           <div onClick={() => navigate(`/lk/race/${id}/application`)}>
             Заявки
           </div>
-          <p>Участники</p>
+          <div onClick={() => navigate(`/lk/race/${id}/participant`)}>
+            Участники
+          </div>
           <p>Результаты</p>
           <form onSubmit={update}>
             <p>Название:</p>

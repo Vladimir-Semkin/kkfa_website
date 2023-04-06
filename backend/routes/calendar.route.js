@@ -1,10 +1,9 @@
 const router = require('express').Router();
-const { RaceEvent, Participant } = require('../db/models');
+const { RaceEvent, GroupPhoto } = require('../db/models');
 
 router.get('/', async (req, res) => {
   try {
-    const results = await RaceEvent.findAll({
-      raw: true,
+    const results = await RaceEvent.findAll({ include: { model: GroupPhoto}
     });
     res.status(200).json(results);
   } catch ({ message }) {

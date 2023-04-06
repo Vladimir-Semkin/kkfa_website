@@ -17,32 +17,18 @@ export default function Contacts(): JSX.Element {
             alt="green iguana"
           />
           <CardContent>
-            <Typography
-              gutterBottom
-              variant="h5"
-              component="div"
-            >
+            <Typography gutterBottom variant="h5" component="div">
               Руденко Александр
             </Typography>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-            >
+            <Typography variant="body2" color="text.secondary">
               Технический комиссар
             </Typography>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-            >
+            <Typography variant="body2" color="text.secondary">
               https://t.me/Legal_023
             </Typography>
           </CardContent>
         </CardActionArea>
       </Card>
-
-
-
-      
       <Card sx={{ width: 260 }} className="raceCard">
         <CardActionArea>
           <CardMedia
@@ -52,23 +38,13 @@ export default function Contacts(): JSX.Element {
             alt="green iguana"
           />
           <CardContent>
-            <Typography
-              gutterBottom
-              variant="h5"
-              component="div"
-            >
+            <Typography gutterBottom variant="h5" component="div">
               Эвилина Котлярова
             </Typography>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-            >
+            <Typography variant="body2" color="text.secondary">
               Главный секретарь
             </Typography>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-            >
+            <Typography variant="body2" color="text.secondary">
               https://t.me/evilin_ka
             </Typography>
           </CardContent>
@@ -83,23 +59,13 @@ export default function Contacts(): JSX.Element {
             alt="green iguana"
           />
           <CardContent>
-            <Typography
-              gutterBottom
-              variant="h5"
-              component="div"
-            >
+            <Typography gutterBottom variant="h5" component="div">
               Котляров Валерий Валентинович
             </Typography>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-            >
+            <Typography variant="body2" color="text.secondary">
               Руководитель ККФА
             </Typography>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-            >
+            <Typography variant="body2" color="text.secondary">
               valeri_kkfa@mail.ru
             </Typography>
           </CardContent>

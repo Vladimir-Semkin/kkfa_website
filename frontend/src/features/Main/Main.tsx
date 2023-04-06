@@ -15,8 +15,10 @@ function Main(): JSX.Element {
       <RaceList />
       <ScoringGroups />
       <Contacts />
+
       <AboutKkfa />
     </div>
+
   );
 }
 

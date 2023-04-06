@@ -7,10 +7,10 @@ import RaceCard from './RaceCard';
 
 function RaceList(): JSX.Element {
   const { racesArr } = useSelector((store: RootState) => store.race);
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(initRace());
-  }, []);
+  // const dispatch = useAppDispatch();
+  // useEffect(() => {
+  //   dispatch(initRace());
+  // }, [dispatch]);
   return (
     <><div>
   
