@@ -19,6 +19,9 @@ export const addAppInPart = createAsyncThunk('part/add', (action: ObjAddPart) =>
 export const delPart = createAsyncThunk('part/delete', (action: ObjAddPart) =>
   api.delPart(action),
 );
+export const updPart = createAsyncThunk('part/update', (action: ObjAddPart) =>
+  api.updPart(action),
+);
 
 const applSlice = createSlice({
   name: 'application',
@@ -49,7 +52,15 @@ const applSlice = createSlice({
       })
       .addCase(delPart.rejected, (state, action) => {
         state.error = action.error.message;
-      });
+      })
+      // .addCase(updPart.fulfilled, (state, action) => {
+      //   state.participantsArr = state.participantsArr.map((participant) =>
+      //   participant.id === action.payload.id ? action.payload : participant
+      //   );
+      // })
+      .addCase(updPart.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
   },
 });
 

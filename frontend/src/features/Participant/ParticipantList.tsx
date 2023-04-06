@@ -20,6 +20,8 @@ function ParticipantList(): JSX.Element {
     <div style={{ width: '100vw' }}>
       <table>
         <tr>
+          <th />
+          <th />
           <th>Фамилия</th>
           <th>Имя</th>
           <th>Отчество</th>

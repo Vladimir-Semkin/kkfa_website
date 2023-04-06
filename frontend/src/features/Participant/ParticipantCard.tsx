@@ -5,7 +5,7 @@ import { useAppDispatch } from '../../store';
 // import { addAppInPart, delPart } from '../Participant/partSlice';
 import '../Application/Application.css';
 import { IdRace } from '../Calendar/types/types';
-import { delPart } from './partSlice';
+import { delPart, updPart } from './partSlice';
 import { ApprovedParticipant } from './types/types';
 
 function ParticipantCard({
@@ -17,25 +17,21 @@ function ParticipantCard({
 }): JSX.Element {
   // const [icon, setIcon] = useState(true);
   const dispatch = useAppDispatch();
-  // const pushApplPart = (): void => {
-  //   setIcon((prev) => !prev);
-  //   dispatch(addAppInPart({ id, applicationId: application.id }));
-  // };
   const delApplPart = (): void => {
-    // setIcon((prev) => !prev);
     dispatch(delPart({ id, applicationId: participant.Application.id }));
+  };
+  const updApplPart = (): void => {
+    dispatch(updPart({ id, applicationId: participant.Application.id }));
   };
 
   return (
     <tr>
-      {/* <td>
-        {icon ? (
-          <button className="icon-add" type="submit" onClick={pushApplPart} />
-        ) : (
-          <button className="icon-del" type="submit" onClick={delApplPart} />
-        )}
-      </td> */}
-      <td><button className="icon-del-part" type="submit" onClick={delApplPart} /></td>
+      <td>
+        <button className="icon-del-part" type="submit" onClick={delApplPart} />
+      </td>
+      <td>
+        <button className="icon-upd-part" type="submit" onClick={updApplPart} />
+      </td>
       <td>{participant.Application.familiya}</td>
       <td>{participant.Application.name}</td>
       <td>{participant.Application.otchestvo}</td>

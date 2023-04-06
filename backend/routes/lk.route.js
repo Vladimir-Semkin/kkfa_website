@@ -130,5 +130,23 @@ router.delete('/race/:id/application/:aplId/delete', async (req, res) => {
     res.status(500).json({ message });
   }
 });
+router.put('/api/lk/race/:idRace/participant/:idAppl', async (req, res) => {
+  try {
+    const { idAppl } = req.params;
+    const { title, date, photo, description } = req.body;
+    if (title || date) {
+      const race = await RaceEvent.findOne({ where: Number(id) });
+      console.log(race, 'back');
+      race.title = title;
+      race.date = date;
+      race.photo = photo;
+      race.description = description;
+      race.save();
+      res.status(201).json(race);
+    }
+  } catch ({ message }) {
+    res.status(500).json({ message });
+  }
+});
 
 module.exports = router;
