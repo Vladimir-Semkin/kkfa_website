@@ -61,7 +61,6 @@ router.put('/:id', async (req, res) => {
 });
 router.get('/race/:id/application', async (req, res) => {
   const { id } = req.params;
-  console.log(req.params);
   try {
     const results = await Application.findAll({
       where: { raceEventId: Number(id) },
@@ -79,7 +78,6 @@ router.post('/race/:id/application', async (req, res) => {
       where: { id: Number(applicationId), raceEventId: Number(id) },
       raw: true,
     });
-
     const participant = await thisApplication.map(async (apl) => {
       await Participant.create({
         applicationId: apl.id,
@@ -95,12 +93,56 @@ router.post('/race/:id/application', async (req, res) => {
 });
 router.delete('/race/:id/application/:aplId', async (req, res) => {
   try {
-    const { id, aplId } = req.params;
+    const { aplId } = req.params;
     const result = await Participant.destroy({
       where: { applicationId: Number(aplId) },
     });
     if (result) {
-      res.status(200).json(id);
+      res.status(200).json(aplId);
+    }
+  } catch ({ message }) {
+    res.status(500).json({ message });
+  }
+});
+router.get('/race/:id/participant', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const participants = await Participant.findAll({
+      where: { raceEventId: Number(id) },
+      include: { model: Application },
+    });
+    res.status(200).json(participants);
+  } catch ({ message }) {
+    res.status(500).json(message);
+  }
+});
+router.delete('/race/:id/application/:aplId/delete', async (req, res) => {
+  try {
+    const { aplId } = req.params;
+    const result = await Application.destroy({
+      where: { id: Number(aplId) },
+    });
+    console.log(result);
+    if (result) {
+      res.status(200).json(Number(aplId));
+    }
+  } catch ({ message }) {
+    res.status(500).json({ message });
+  }
+});
+router.put('/api/lk/race/:idRace/participant/:idAppl', async (req, res) => {
+  try {
+    const { idAppl } = req.params;
+    const { title, date, photo, description } = req.body;
+    if (title || date) {
+      const race = await RaceEvent.findOne({ where: Number(id) });
+      console.log(race, 'back');
+      race.title = title;
+      race.date = date;
+      race.photo = photo;
+      race.description = description;
+      race.save();
+      res.status(201).json(race);
     }
   } catch ({ message }) {
     res.status(500).json({ message });

@@ -1,14 +1,28 @@
 .icon-add {
   background: url(../../../public/icons/icons8-add-new-24.png) no-repeat top
     right;
-    background-size: 100%;
-    padding: 18px 18px;
-    border: 0ch;
+  background-size: 100%;
+  padding: 18px 18px;
+  border: 0ch;
 }
 .icon-del {
   background: url(../../../public/icons/icons8-проверено-48.png) no-repeat top
     right;
-    background-size: 100%;
-    padding: 18px 18px;
-    border: 0ch;
+  background-size: 100%;
+  padding: 18px 18px;
+  border: 0ch;
+}
+.icon-del-part {
+  background: url(../../../public/icons/icons8-удалить-48.png)
+    no-repeat top right;
+  background-size: 100%;
+  padding: 14px 14px;
+  border: 0ch;
+}
+.icon-upd-part {
+  background: url(../../../public/icons/icons8-редактировать-24.png)
+    no-repeat top right;
+  background-size: 100%;
+  padding: 12px 12px;
+  border: 0ch;
 }

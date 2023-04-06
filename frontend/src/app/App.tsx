@@ -14,6 +14,7 @@ import Main from '../features/Main/Main';
 import RaceParams from '../features/RaceParams/RaceParams';
 import ApplicationList from '../features/Application/ApplicationList';
 import TimeAttack from '../features/adoutTimeAttack/TimeAttack';
+import ParticipantList from '../features/Participant/ParticipantList';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -36,6 +37,7 @@ function App(): JSX.Element {
         <Route path="/race/registration/:id" element={<RegistrationForm />} />
         <Route path="/docs" element={<Document />} />
         <Route path="/abouttimeattack" element={<TimeAttack />} />
+        <Route path="lk/race/:id/participant" element={<ParticipantList />} />
       </Routes>
     </>
   );
