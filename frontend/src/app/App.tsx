@@ -14,8 +14,12 @@ import LK from '../features/LK/LK';
 import EventParams from '../features/LK/EventParams';
 import Main from '../features/Main/Main';
 import RaceParams from '../features/RaceParams/RaceParams';
+
 import { initRace } from '../features/LK/lkSlice';
 import { initResult } from '../features/Result/resultSlice';
+
+import ParticipantList from '../features/Participant/ParticipantList';
+
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -40,6 +44,7 @@ function App(): JSX.Element {
         <Route path="/race/registration/:id" element={<RegistrationForm />} />
         <Route path="/docs" element={<Document />} />
         <Route path="/abouttimeattack" element={<TimeAttack />} />
+        <Route path="lk/race/:id/participant" element={<ParticipantList />} />
       </Routes>
     </>
   );
