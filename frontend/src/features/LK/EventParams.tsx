@@ -44,7 +44,9 @@ function EventParams(): JSX.Element {
           <div onClick={() => navigate(`/lk/race/${id}/application`)}>
             Заявки
           </div>
-          <p>Участники</p>
+          <div onClick={() => navigate(`/lk/race/${id}/participant`)}>
+            Участники
+          </div>
           <p>Результаты</p>
           <form onSubmit={update}>
             <p>Название:</p>

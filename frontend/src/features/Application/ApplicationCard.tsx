@@ -5,6 +5,7 @@ import { Application } from '../RegApplication/types/types';
 import { addAppInPart, delPart } from '../Participant/partSlice';
 import './Application.css';
 import { IdRace } from '../Calendar/types/types';
+import { delAppl } from './applSlice';
 
 function ApplicationCard({
   application,
@@ -23,6 +24,9 @@ function ApplicationCard({
     setIcon((prev) => !prev);
     dispatch(delPart({ id, applicationId: application.id }));
   };
+  const delApplication = (): void => {
+    dispatch(delAppl({ id, applicationId: application.id }));
+  };
   return (
     <tr>
       <td>
@@ -31,6 +35,9 @@ function ApplicationCard({
         ) : (
           <button className="icon-del" type="submit" onClick={delApplPart} />
         )}
+      </td>
+      <td>
+          <button className="icon-del-part" type="submit" onClick={delApplication} />
       </td>
       <td>{application.familiya}</td>
       <td>{application.name}</td>

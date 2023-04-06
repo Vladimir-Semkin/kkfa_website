@@ -1,6 +1,11 @@
-import { IdApplication } from '../RegApplication/types/types';
-import { ObjAddPart, Participant } from './types/types';
+import { IdRace } from '../LK/types/types';
+// import { Application } from '../RegApplication/types/types';
+import { ApprovedParticipant, ObjAddPart, ObjDelPart, Participant } from './types/types';
 
+export const initParticipants = async (id: IdRace): Promise<ApprovedParticipant[]> => {
+  const res = await fetch(`/api/lk/race/${id}/participant`);
+  return res.json();
+};
 export const addAppInPart = async (obj: ObjAddPart): Promise<Participant> => {
   const res = await fetch(`/api/lk/race/${obj.id}/application`, {
     method: 'POST',
@@ -23,3 +28,13 @@ export const delPart = async (obj: ObjAddPart): Promise<number> => {
   }
   return res.json();
 };
+// export const delPartDaUje = async (obj: ObjDelPart): Promise<number> => {
+//   const res = await fetch(`/api/lk/race/${obj.id}/participant/${obj.participantId}`, {
+//     method: 'DELETE',
+//   });
+//   if (!res.ok) {
+//     const { message } = await res.json();
+//     throw message;
+//   }
+//   return res.json();
+// };
