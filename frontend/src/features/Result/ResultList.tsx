@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 import { RootState, useAppDispatch } from '../../store';
 import ResultCard from './ResultCard';
 import { initResult } from './resultSlice';
@@ -11,9 +11,8 @@ function ResultList({ id }: { id: IdRace }): JSX.Element {
   const { resultsArr } = useSelector((store: RootState) => store.result);
   // const { id } = useParams();
   const resultsArrId = resultsArr.filter(
-    (resultObj) => resultObj['Participants.raceEventId'] === Number(id),
+    (resultObj) => resultObj['Participants.raceEventId'] === Number(id)
   );
-  console.log(resultsArrId);
 
   const dispatch = useAppDispatch();
   useEffect(() => {

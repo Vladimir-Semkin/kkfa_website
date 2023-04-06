@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { IdRace, Race, State } from './types/types';
 import * as api from './api';
-import * as apiLK from '../LK/api';
+// import * as apiLK from '../LK/api';
 
 const initialState: State = {
   racesArr: [],
@@ -25,11 +25,9 @@ const raceSlice = createSlice({
       .addCase(initRace.fulfilled, (state, action) => {
         state.racesArr = action.payload;
         state.error = undefined;
-
       })
       .addCase(initRace.pending, (state, action) => {
         state.error = 'Загрузка...';
-
       })
       // .addCase(initRace.pending, (state, action) => {
       //   state.error = 'загрузка';

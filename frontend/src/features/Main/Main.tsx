@@ -13,7 +13,7 @@ function Main(): JSX.Element {
       <ScoringGroups />
       <Contacts />
       {/* <p></p> */}
-      <AboutKkfa/>
+      <AboutKkfa />
     </>
   );
 }

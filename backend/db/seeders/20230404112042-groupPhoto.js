@@ -41,6 +41,27 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          raceeventId: 3,
+          photo:
+            'https://www.fia.com/sites/default/files/styles/content_details/public/news/main_image/unnamed_59.jpg?itok=Exu_o1hU',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          raceeventId: 3,
+          photo:
+            'https://www.fia.com/sites/default/files/news/main_image/wrx_-_1.jpg',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          raceeventId: 3,
+          photo:
+            'https://www.driving.co.uk/wp-content/uploads/sites/5/2018/06/World-Rallycross-01.jpg',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );
