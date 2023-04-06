@@ -2,10 +2,10 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
+
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
+
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 // import Tooltip from '@mui/material/Tooltip';
@@ -26,10 +26,10 @@ function NavBar(): JSX.Element {
   const { admin } = useSelector((store: RootState) => store.auth);
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null,
+    null
   );
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
-    null,
+    null
   );
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>): void => {
     setAnchorElNav(event.currentTarget);
@@ -48,8 +48,13 @@ function NavBar(): JSX.Element {
   const navigate = useNavigate();
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
+    <AppBar
+    className={style.navbar}
+      position="fixed"
+      sx={{ backgroundColor: 'rgba(25, 118, 210, 0.3);' }}
+      
+    >
+      <Container maxWidth="xl" >
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
@@ -64,7 +69,7 @@ function NavBar(): JSX.Element {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              // color: 'inherit',
               textDecoration: 'none',
             }}
           >
@@ -74,7 +79,10 @@ function NavBar(): JSX.Element {
           {'id' in admin && (
             <>
               <div style={{ marginRight: '10px' }}>
-                <Link className={style.link} to="/lk">
+                <Link
+                  className={style.link}
+                  to="/lk"
+                >
                   ЛИЧНЫЙ КАБИНЕТ
                 </Link>
               </div>
@@ -90,10 +98,16 @@ function NavBar(): JSX.Element {
             </>
           )}
 
-          <Button onClick={() => navigate('/docs')} style={{ color: 'white' }}>
+          <Button
+            onClick={() => navigate('/docs')}
+            style={{ color: 'white' }}
+          >
             Документы
           </Button>
-          <Button onClick={() => navigate('/')} style={{ color: 'white' }}>
+          <Button
+            onClick={() => navigate('/')}
+            style={{ color: 'white' }}
+          >
             На главную
           </Button>
           <Button
@@ -137,7 +151,10 @@ function NavBar(): JSX.Element {
             onClose={handleCloseUserMenu}
           >
             {settings.map((setting) => (
-              <MenuItem key={setting} onClick={handleCloseUserMenu}>
+              <MenuItem
+                key={setting}
+                onClick={handleCloseUserMenu}
+              >
                 <Typography textAlign="center">{setting}</Typography>
               </MenuItem>
             ))}

@@ -8,7 +8,7 @@ import { CardActionArea } from '@mui/material';
 export default function Contacts(): JSX.Element {
   return (
     <div className="container">
-      <Card sx={{ width: 260 }}>
+      <Card sx={{ width: 260 }} className="raceCard">
         <CardActionArea>
           <CardMedia
             component="img"
@@ -43,7 +43,7 @@ export default function Contacts(): JSX.Element {
 
 
       
-      <Card sx={{ width: 260 }}>
+      <Card sx={{ width: 260 }} className="raceCard">
         <CardActionArea>
           <CardMedia
             component="img"
@@ -74,7 +74,7 @@ export default function Contacts(): JSX.Element {
           </CardContent>
         </CardActionArea>
       </Card>
-      <Card sx={{ width: 260 }}>
+      <Card sx={{ width: 260 }} className="raceCard">
         <CardActionArea>
           <CardMedia
             component="img"

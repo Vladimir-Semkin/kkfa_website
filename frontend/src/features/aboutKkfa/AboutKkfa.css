@@ -16,3 +16,10 @@
     font-size: 30px;
     color: rgb(224, 161, 1);
 }
+
+
+.containerKkfa{
+    background-color: white;
+    display: flex;
+  flex-flow: row nowrap;
+}

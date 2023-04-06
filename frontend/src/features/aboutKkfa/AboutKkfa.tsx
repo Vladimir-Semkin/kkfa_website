@@ -3,7 +3,7 @@ import React from 'react';
 import './AboutKkfa.css';
 function AboutKkfa(): JSX.Element {
   return (
-    <div className="container">
+    <div className="containerKkfa">
       <div>
         <img
           src="/contactsImg/111.png"
