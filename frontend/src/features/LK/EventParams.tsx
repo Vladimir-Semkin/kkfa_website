@@ -28,7 +28,6 @@ function EventParams(): JSX.Element {
       const data = new FormData();
       picturesData.forEach((img) => {
         data.append('homesImg', img);
-        // console.log(data);
       });
       data.append('id', String(id));
 
