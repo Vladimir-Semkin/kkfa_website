@@ -12,6 +12,8 @@ function RaceCard({ race }: { race: Race }): JSX.Element {
   const navigate = useNavigate();
 
   return (
+    <>
+    
     <Card sx={{ maxWidth: 345 }} className="raceCard">
       <CardActionArea>
         <CardMedia
@@ -39,7 +41,7 @@ function RaceCard({ race }: { race: Race }): JSX.Element {
           Подробнее
         </Button>
       </CardActions>
-    </Card>
+    </Card></>
   );
 }
 

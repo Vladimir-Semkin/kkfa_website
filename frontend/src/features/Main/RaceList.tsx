@@ -12,11 +12,13 @@ function RaceList(): JSX.Element {
   //   dispatch(initRace());
   // }, [dispatch]);
   return (
+    <><div>
+  
     <div className="container">
       {racesArr.length > 0
         ? racesArr.map((race) => <RaceCard race={race} key={race.id} />)
         : null}
-    </div>
+    </div></div></>
   );
 }
 

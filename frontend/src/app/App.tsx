@@ -3,8 +3,10 @@ import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import Calendar from '../features/Calendar/Calendar';
 import NavBar from '../features/navbar/Navbar';
+
 import TimeAttack from '../features/adoutTimeAttack/TimeAttack';
 import ApplicationList from '../features/Application/ApplicationList';
+
 import RegistrationForm from '../features/RegApplication/RegistrationForm';
 import AdminForm from '../features/Admin/AdminForm';
 import { useAppDispatch } from '../store';

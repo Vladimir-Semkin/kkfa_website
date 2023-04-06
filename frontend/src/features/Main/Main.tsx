@@ -2,19 +2,23 @@ import React from 'react';
 import AboutKkfa from '../aboutKkfa/AboutKkfa';
 import Contacts from '../contacts/Contacts';
 import ScoringGroups from '../ScoringGroups/ScoringGroups';
+import Countdown from '../timer/components/Countdown';
 import RaceList from './RaceList';
-import TimeBeforeRace from './TimeBeforeRace';
 
 function Main(): JSX.Element {
   return (
-    <>
-      <TimeBeforeRace />
+    <div className='main'>
+     
+      <div className="wrapper">
+        <Countdown />
+      </div>
       <RaceList />
       <ScoringGroups />
       <Contacts />
-      {/* <p></p> */}
+
       <AboutKkfa />
-    </>
+    </div>
+
   );
 }
 
