@@ -49,12 +49,11 @@ function NavBar(): JSX.Element {
 
   return (
     <AppBar
-    className={style.navbar}
-      position="fixed"
+      className={style.navbar}
+      position="static"
       sx={{ backgroundColor: 'rgba(25, 118, 210, 0.3);' }}
-      
     >
-      <Container maxWidth="xl" >
+      <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
