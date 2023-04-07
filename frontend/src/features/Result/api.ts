@@ -5,4 +5,15 @@ export const initResult = async (): Promise<Result[]> => {
   return res.json();
 };
 
-export const lala = () => {};
+export const addResult = async (obj: Result): Promise<Result> => {
+  const res = await fetch('lk/race/:id/results', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(obj),
+  });
+  if (!res.ok) {
+    const { message } = await res.json();
+    throw message;
+  }
+  return res.json();
+};

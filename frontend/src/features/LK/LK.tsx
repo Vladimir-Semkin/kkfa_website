@@ -5,8 +5,11 @@ import FormAddRace from './FormAddRace';
 function LK(): JSX.Element {
   return (
     <>
-      <FormAddRace />
-      <EventsList />
+      <div className="title-all-race">Список всех мероприятий</div>
+      <div className="lk">
+        <EventsList />
+        <FormAddRace />
+      </div>
     </>
   );
 }

@@ -31,7 +31,7 @@ export type ApplInPApproved = {
   nestandartnyVpusk?: string;
   izmKuzova?: string;
   groupListId?: number;
-  team?: string;
+  teamId?: string;
   ispolzovanieAutoDrugimi?: string;
   startNomer?: string;
   raceEventId?: number;
@@ -53,5 +53,10 @@ export type IdParticipant = Participant['id'];
 export type ObjDelPart = {
   id: IdRace;
   participantId: IdParticipant;
+};
+export type ObjUpdInput = {
+  id: IdRace;
+  applicationId: IdApplication;
+  input: string;
 };
 export type Message = { message: string };
