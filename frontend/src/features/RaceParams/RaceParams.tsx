@@ -4,12 +4,13 @@ import { useSelector } from 'react-redux';
 import ResultList from '../Result/ResultList';
 import Photos from '../Photos/Photos';
 import { RootState } from '../../store';
+import style from './RaceParams.module.css';
 
 function RaceParams(): JSX.Element {
   const { id } = useParams();
   const navigate = useNavigate();
   const { racesArr } = useSelector((store: RootState) => store.lk);
-  const racesArrId = racesArr.filter((el) =>  el.id === Number(id));
+  const racesArrId = racesArr.filter((el) => el.id === Number(id));
 
   return (
     <>
@@ -25,6 +26,11 @@ function RaceParams(): JSX.Element {
           <div>
             <div>{el.title}</div>
             <div>{el.date}</div>
+            <div>
+              <a className={style.link} href={el.link} rel="noreferrer" target="_blank">
+                Посмотреть галерею фотографий на яндекс диске
+              </a>
+            </div>
           </div>
         ))}
       {racesArrId && <Photos racesArrId={racesArrId[0].GroupPhotos} />}

@@ -13,13 +13,14 @@ function EventParams(): JSX.Element {
   const [date, setDate] = useState(race?.date);
   const [photo, setPhoto] = useState(race?.photo);
   const [description, setDescription] = useState(race?.description);
+  const [link, setLink] = useState(race?.link);
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   function update(e: React.FormEvent<HTMLFormElement>): void {
     e.preventDefault();
-    dispatch(updRace({ id: Number(id), title, date, photo, description }));
+    dispatch(updRace({ id: Number(id), title, date, photo, description, link }));
   }
 
   const sendFiles = async (e: any): Promise<any> => {
@@ -37,7 +38,7 @@ function EventParams(): JSX.Element {
   };
 
   return (
-    <div className="col s3 ">
+    <div className="">
       {race && (
         <div className="card-image">
           <div onClick={() => navigate(`/lk/race/${id}/application`)}>
@@ -76,42 +77,53 @@ function EventParams(): JSX.Element {
               )}
             </div>
             <div>
+              <p>Ссылка на удаленное облако </p>
+              <p>Фотографий</p>
+              <input onChange={(e) => setLink(e.target.value)} value={link} />
+            </div>
+            <div>
               <button className={style.btnUpd} type="submit">
                 сохранить изменения
               </button>
             </div>
           </form>
 
-          <div>{}</div>
-
-          <div style={{ margin: '40px' }}>
-            <form
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-              }}
-            >
-              <input
-                className={style.hidden}
-                type="file"
-                multiple
-                onChange={sendFiles}
-              />
-              <button
-                style={{
-                  backgroundColor: 'green',
-                  color: 'white',
-                  width: '115px',
-                }}
-                type="submit"
-              >
-                Добавить фотографии
-              </button>
-            </form>
+          <div
+            style={{
+              margin: '40px',
+              // display: 'flex',
+              // flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <input
+              className={style.hidden}
+              type="file"
+              multiple
+              onChange={sendFiles}
+            />
           </div>
         </div>
       )}
+
+      {/* <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      > */}
+      {/* <button
+          style={{
+            backgroundColor: 'green',
+            color: 'white',
+            width: '115px',
+          }}
+          type="submit"
+        >
+          Установить
+        </button> */}
+      {/* </div> */}
       <button type="button" onClick={() => navigate(-1)}>
         назад
       </button>

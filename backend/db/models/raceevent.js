@@ -24,6 +24,9 @@ module.exports = (sequelize, DataTypes) => {
       description: {
         type: DataTypes.TEXT,
       },
+      link: {
+        type: DataTypes.TEXT,
+      },
     },
     {
       sequelize,
