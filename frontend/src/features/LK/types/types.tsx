@@ -4,6 +4,7 @@ export type Race = {
   date: string | undefined;
   photo: string | undefined;
   description: string | undefined;
+  link?: string | undefined;
   'Participants.raceEventId'?: number;
   GroupPhotos?: GroupPhotos[] | undefined;
 };

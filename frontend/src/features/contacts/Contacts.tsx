@@ -8,6 +8,7 @@ import { CardActionArea } from '@mui/material';
 export default function Contacts(): JSX.Element {
   return (
     <div className="container">
+      <div className="divCalendarCard">Организаторы</div>
       <Card sx={{ width: 260 }} className="raceCard">
         <CardActionArea>
           <CardMedia
