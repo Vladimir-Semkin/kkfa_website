@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { RootState, useAppDispatch } from '../../store';
 import { photoRouter, updRace } from './lkSlice';
-// import style from './EventParams.module.css';
+import style from './EventParams.module.css';
 import './FormAddRace.css';
 
 function EventParams(): JSX.Element {
@@ -22,7 +22,7 @@ function EventParams(): JSX.Element {
   function update(e: React.FormEvent<HTMLFormElement>): void {
     e.preventDefault();
     dispatch(
-      updRace({ id: Number(id), title, date, photo, description, link }),
+      updRace({ id: Number(id), title, date, photo, description, link })
     );
   }
 
@@ -44,12 +44,19 @@ function EventParams(): JSX.Element {
     <div className="col-3">
       {race && (
         <div>
-          <div onClick={() => navigate(`/lk/race/${id}/application`)}>
+          <button
+            className={style.btn}
+            type="button"
+            onClick={() => navigate(`/lk/race/${id}/application`)}
+          >
             Заявки
-          </div>
-          <div onClick={() => navigate(`/lk/race/${id}/participant`)}>
+          </button>
+          <button
+            type="button"
+            onClick={() => navigate(`/lk/race/${id}/participant`)}
+          >
             Участники
-          </div>
+          </button>
           {/* <div onClick={() => navigate(`/lk/race/${id}/results`)}>
             Результаты
           </div> */}
@@ -151,7 +158,7 @@ function EventParams(): JSX.Element {
           Установить
         </button> */}
       {/* </div> */}
-      <button type="button" onClick={() => navigate(-1)}>
+      <button className={style.bntBack} type="button" onClick={() => navigate(-1)}>
         назад
       </button>
     </div>

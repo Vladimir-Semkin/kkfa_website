@@ -1,7 +1,10 @@
 
 .navBar {
-  position: relative;
-  max-width: 100vw;
+  position:fixed !important;
+  z-index: 3;
+  background-color: #444444c3 !important;
+  /* position: relative; */
+  max-width: 100vw !important;
   /* display: flex; */
   /* height: 70px; */
   /* opacity: 0.3; */
@@ -17,6 +20,8 @@
 }
 
 .container {
+  background-color: green;
+  height: 90px;
   /* display: flex; */
   /* flex-direction: row; */
   /* justify-content: end; */
@@ -30,8 +35,11 @@
 }
 
 .navigation {
-  display: flex;
+  display: flex !important;
+  height: 70px !important;
+  /* flex-direction: row !important; */
   justify-content: space-around;
+  align-items: center;
 }
 
 .exit {

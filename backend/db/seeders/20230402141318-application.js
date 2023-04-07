@@ -31,7 +31,7 @@ module.exports = {
           groupListId: 1,
           teamId: 1,
           startNomer: 1,
-          raceEventId: 3,
+          raceEventId: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
         },

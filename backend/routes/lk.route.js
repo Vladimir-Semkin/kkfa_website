@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    const { title, date, photo, description } = req.body;
+    const { title, date, photo, description, link } = req.body;
     if (title && date) {
       const race = await RaceEvent.create({
         title,

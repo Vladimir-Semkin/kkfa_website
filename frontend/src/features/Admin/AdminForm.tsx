@@ -24,14 +24,16 @@ export default function AdminForm(): JSX.Element {
   };
   return (
     <div className={style.adminForm}>
-      <form onSubmit={login}>
+      <form className={style.reform} onSubmit={login}>
         <p>email:</p>
         <input onChange={(e) => setEmail(e.target.value)} value={email} />
         <p>password:</p>
         <input onChange={(e) => setPassword(e.target.value)} value={password} />
         <button type="submit">войти</button>
       </form>
+      <div>
       {error && <h4>{error}</h4>}
+      </div>
     </div>
   );
 }

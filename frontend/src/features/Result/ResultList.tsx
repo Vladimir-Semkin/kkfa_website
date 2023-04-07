@@ -13,7 +13,7 @@ function ResultList({ id }: { id: IdRace }): JSX.Element {
   const resultsArrId = resultsArr.filter(
     (resultObj) => resultObj['Participants.raceEventId'] === Number(id)
   );
-
+  console.log(resultsArrId);
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(initResult());
@@ -21,26 +21,28 @@ function ResultList({ id }: { id: IdRace }): JSX.Element {
 
   return (
     <div>
-      <h3>Результаты</h3>
-      <div>
-        <table>
-          <caption>Результаты чемпионата, допустим</caption>
-          <tr>
-            <th>стартовый номер</th>
-            <th>ФИО</th>
-            <th>время</th>
-            <th>попытка</th>
-          </tr>
-          {resultsArrId.length > 0
-            ? resultsArrId.map((result) => (
+      {resultsArrId.length > 0 && (
+        <>
+          <h3>Результаты</h3>
+          <div>
+            <table>
+              <caption>Результаты чемпионата, допустим</caption>
+              <tr>
+                <th>стартовый номер</th>
+                <th>ФИО</th>
+                <th>время</th>
+                <th>попытка</th>
+              </tr>
+              {resultsArrId.map((result) => (
                 <ResultCard
                   result={result}
                   key={result['Participants.Results.id']}
                 />
-              ))
-            : null}
-        </table>
-      </div>
+              ))}
+            </table>
+          </div>
+        </>
+      )}
     </div>
   );
 }
