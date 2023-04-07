@@ -5,6 +5,17 @@
     justify-content: space-around;
     /* margin-top: 7%; */
 }
+.divCalendarCard{
+ 
+  font-size: 35px;
+  margin-top: 3%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;  
+  font-weight: 900;
+  color: rgb(102, 102, 102);
+}
 
 .raceCard{
   margin-top: 10%;
