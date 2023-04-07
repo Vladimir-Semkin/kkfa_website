@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { RaceEvent, Participant, Application } = require('../db/models');
+const { RaceEvent, Participant, Application, Result } = require('../db/models');
 
 router.get('/', async (req, res) => {
   try {
@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    const { title, date, photo, description } = req.body;
+    const { title, date, photo, description, link } = req.body;
     if (title && date) {
       const race = await RaceEvent.create({
         title,
@@ -133,7 +133,7 @@ router.delete('/race/:id/application/:aplId/delete', async (req, res) => {
     res.status(500).json({ message });
   }
 });
-router.put('/api/lk/race/:idRace/participant/:idAppl', async (req, res) => {
+router.put('/race/:idRace/participant/:idAppl', async (req, res) => {
   try {
     const { idAppl } = req.params;
     const { id, applicationId, input } = req.body;
@@ -148,22 +148,19 @@ router.put('/api/lk/race/:idRace/participant/:idAppl', async (req, res) => {
     res.status(500).json({ message });
   }
 });
-router.post('lk/race/:id/results', async (req, res) => {
+router.post('/race/:id/results', async (req, res) => {
   try {
-    const { startNomer, attempt, time } = req.body;
-    const thisApplication = await Participant.findOne({
+    const { id, startNomer, attempt, time } = req.body;
+    const thisParticipant = await Participant.findOne({
       where: { startNomer: Number(startNomer), raceEventId: Number(id) },
       raw: true,
     });
-    const participant = await thisApplication.map(async (apl) => {
-      await Result.create({
-        applicationId: apl.id,
-        raceEventId: apl.raceEventId,
-        groupListId: apl.groupListId,
-        startNomer: apl.groupListId,
-      });
+    const result = await Result.create({
+      participantId: thisParticipant.id,
+      time,
+      attempt,
     });
-    res.status(201).json(participant);
+    res.status(201).json(result);
   } catch ({ message }) {
     res.status(500).json({ message });
   }

@@ -21,6 +21,7 @@ function ApplicationList(): JSX.Element {
       <table>
         <tr>
           <th />
+          <th />
           <th>Фамилия</th>
           <th>Имя</th>
           <th>Отчество</th>
@@ -49,7 +50,7 @@ function ApplicationList(): JSX.Element {
         {applicationsArr.length > 0
           ? applicationsArr.map((application) => (
               <ApplicationCard
-                key={application.id}
+                // key={application.id}
                 application={application}
                 id={Number(id)}
               />

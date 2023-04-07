@@ -24,10 +24,15 @@ function RaceParams(): JSX.Element {
       {racesArrId &&
         racesArrId?.map((el) => (
           <div>
-            <div>{el.title}</div>
+            <div >{el.title}</div>
             <div>{el.date}</div>
             <div>
-              <a className={style.link} href={el.link} rel="noreferrer" target="_blank">
+              <a
+                className={style.link}
+                href={el.link}
+                rel="noreferrer"
+                target="_blank"
+              >
                 Посмотреть галерею фотографий на яндекс диске
               </a>
             </div>

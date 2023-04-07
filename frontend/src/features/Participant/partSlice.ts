@@ -23,7 +23,7 @@ export const updPart = createAsyncThunk('part/update', (action: ObjUpdInput) =>
   api.updPart(action),
 );
 
-const applSlice = createSlice({
+const partSlice = createSlice({
   name: 'application',
   initialState,
   reducers: {},
@@ -54,8 +54,6 @@ const applSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(updPart.fulfilled, (state, action) => {
-        console.log(action);
-
         state.participantsArr = state.participantsArr.map((participant) =>
           participant.id === action.payload.id ? action.payload : participant,
         );
@@ -66,4 +64,4 @@ const applSlice = createSlice({
   },
 });
 
-export default applSlice.reducer;
+export default partSlice.reducer;
