@@ -1,0 +1,86 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap');
+
+
+.table {
+  width: 50%;
+  border: none;
+  margin: 5rem 0 20px 5rem;
+}
+.table thead th {
+  font-weight: bold;
+  text-align: center;
+  border: none;
+  padding: 10px 15px;
+  background: #5a7ab1;
+  margin-top: 0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  color: #eef2f6;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+}
+.table tbody td {
+  text-align: center;
+  vertical-align: middle;
+  font-size: 18px;
+  background: #f3f3f3;
+}
+.table thead tr th:first-child,
+.table tbody tr td:first-child {
+  border-left: none;
+}
+.table thead tr th:last-child,
+.table tbody tr td:last-child {
+  border-right: none;
+}
+.title {
+  cursor: pointer;
+}
+
+.title:hover {
+  color: rgb(219, 10, 10);
+}
+
+.photoEvent {
+  width: 100px;
+  height: 70px;
+  border-radius: 10px;
+}
+
+.updPhoto {
+  width: 200px;
+  border-radius: 24px;
+  margin: 10px;
+}
+
+.btnUpd {
+  margin: 10px;
+}
+
+.lk {
+  display: flex;
+  justify-content: space-between;
+}
+.icon-del-race {
+  background: url(../../../public/icons/icons8-удалить-48.png) no-repeat top
+    right;
+  background-size: 100%;
+  padding: 14px 14px;
+  border: 0ch;
+}
+.icon-open-race {
+  background: url(../../../public/icons/icons8-открыть-в-окне-24.png) no-repeat
+    top right;
+  background-size: 100%;
+  padding: 14px 14px;
+  border: 0ch;
+}
+.title-all-race {
+  margin-top: 130px;
+  text-align: center;
+  color: #5a7ab1;
+  font-size: 36px;
+  font-family: 'Yeseva One', cursive;
+}

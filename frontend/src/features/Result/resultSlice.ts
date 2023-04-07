@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { State } from './types/types';
+import { Result, State } from './types/types';
 import * as api from './api';
 
 const initialState: State = {
@@ -8,7 +8,10 @@ const initialState: State = {
 };
 
 export const initResult = createAsyncThunk('result/init', () =>
-  api.initResult()
+  api.initResult(),
+);
+export const addResult = createAsyncThunk('result/add', (action: Result) =>
+  api.addResult(action),
 );
 
 const resultSlice = createSlice({
@@ -21,6 +24,12 @@ const resultSlice = createSlice({
         state.resultsArr = action.payload;
       })
       .addCase(initResult.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(addResult.fulfilled, (state, action) => {
+        state.resultsArr.push(action.payload);
+      })
+      .addCase(addResult.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },

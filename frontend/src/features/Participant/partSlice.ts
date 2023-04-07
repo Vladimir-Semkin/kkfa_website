@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { ObjAddPart, State } from './types/types';
+import { ObjAddPart, ObjUpdInput, State } from './types/types';
 import * as api from './api';
 import { IdRace } from '../LK/types/types';
 
@@ -19,7 +19,7 @@ export const addAppInPart = createAsyncThunk('part/add', (action: ObjAddPart) =>
 export const delPart = createAsyncThunk('part/delete', (action: ObjAddPart) =>
   api.delPart(action),
 );
-export const updPart = createAsyncThunk('part/update', (action: ObjAddPart) =>
+export const updPart = createAsyncThunk('part/update', (action: ObjUpdInput) =>
   api.updPart(action),
 );
 
@@ -53,14 +53,16 @@ const applSlice = createSlice({
       .addCase(delPart.rejected, (state, action) => {
         state.error = action.error.message;
       })
-      // .addCase(updPart.fulfilled, (state, action) => {
-      //   state.participantsArr = state.participantsArr.map((participant) =>
-      //   participant.id === action.payload.id ? action.payload : participant
-      //   );
-      // })
+      .addCase(updPart.fulfilled, (state, action) => {
+        console.log(action);
+
+        state.participantsArr = state.participantsArr.map((participant) =>
+          participant.id === action.payload.id ? action.payload : participant,
+        );
+      })
       .addCase(updPart.rejected, (state, action) => {
         state.error = action.error.message;
-      })
+      });
   },
 });
 

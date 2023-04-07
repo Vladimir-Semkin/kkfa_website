@@ -3,7 +3,8 @@ import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { RootState, useAppDispatch } from '../../store';
 import { photoRouter, updRace } from './lkSlice';
-import style from './EventParams.module.css';
+// import style from './EventParams.module.css';
+import './FormAddRace.css';
 
 function EventParams(): JSX.Element {
   const { id } = useParams();
@@ -37,79 +38,83 @@ function EventParams(): JSX.Element {
   };
 
   return (
-    <div className="col s3 ">
+    <div className="col-3">
       {race && (
-        <div className="card-image">
+        <div>
           <div onClick={() => navigate(`/lk/race/${id}/application`)}>
             Заявки
           </div>
           <div onClick={() => navigate(`/lk/race/${id}/participant`)}>
             Участники
           </div>
-          <p>Результаты</p>
-          <form onSubmit={update}>
-            <p>Название:</p>
-            <input onChange={(e) => setTitle(e.target.value)} value={title} />
-
-            <p>Дата:</p>
-            <input
-              type="date"
-              onChange={(e) => setDate(e.target.value)}
-              value={date}
-            />
-
-            <p>Фото:</p>
-            <input onChange={(e) => setPhoto(e.target.value)} value={photo} />
-
-            <p>Описание:</p>
-            <input
-              onChange={(e) => setDescription(e.target.value)}
-              value={description}
-            />
-            <div>
-              {race.photo && (
-                <img
-                  className={style.updPhoto}
-                  src={race.photo}
-                  alt="cardPhoto"
+          {/* <div onClick={() => navigate(`/lk/race/${id}/results`)}>
+            Результаты
+          </div> */}
+          <div className="decor">
+            <div className="form-left-decoration" />
+            <div className="form-right-decoration" />
+            <div className="circle" />
+            <div className="form-inner">
+              <form onSubmit={update}>
+                <p>Название:</p>
+                <input
+                  onChange={(e) => setTitle(e.target.value)}
+                  value={title}
                 />
-              )}
-            </div>
-            <div>
-              <button className={style.btnUpd} type="submit">
-                сохранить изменения
-              </button>
-            </div>
-          </form>
 
-          <div>{}</div>
+                <p>Дата:</p>
+                <input
+                  type="date"
+                  onChange={(e) => setDate(e.target.value)}
+                  value={date}
+                />
 
-          <div style={{ margin: '40px' }}>
-            <form
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-              }}
-            >
-              <input
-                className={style.hidden}
-                type="file"
-                multiple
-                onChange={sendFiles}
-              />
-              <button
+                <p>Фото:</p>
+                <input
+                  onChange={(e) => setPhoto(e.target.value)}
+                  value={photo}
+                />
+
+                <p>Описание:</p>
+                <textarea
+                  onChange={(e) => setDescription(e.target.value)}
+                  value={description}
+                />
+                <div>
+                  {race.photo && (
+                    <img
+                      className="updPhoto"
+                      src={race.photo}
+                      alt="cardPhoto"
+                    />
+                  )}
+                </div>
+                <div>
+                  <input type="submit" value="Cохранить изменения" />
+                </div>
+              </form>
+            </div>
+            <div>{}</div>
+
+            <div style={{ margin: '40px' }} className='form-inner'>
+              <form
                 style={{
-                  backgroundColor: 'green',
-                  color: 'white',
-                  width: '115px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
                 }}
-                type="submit"
               >
-                Добавить фотографии
-              </button>
-            </form>
+                <input
+                  className="hidden"
+                  type="file"
+                  multiple
+                  onChange={sendFiles}
+                />
+                <input type="submit" className='addMorePhotos' value="Добавить фотографии" />
+              </form>
+            </div>
           </div>
+          {/* </div> */}
         </div>
       )}
       <button type="button" onClick={() => navigate(-1)}>

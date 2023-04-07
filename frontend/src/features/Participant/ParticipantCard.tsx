@@ -15,13 +15,21 @@ function ParticipantCard({
   participant: ApprovedParticipant;
   id: IdRace;
 }): JSX.Element {
-  // const [icon, setIcon] = useState(true);
+  const [icon, setIcon] = useState(true);
+  const [input, setInput] = useState(`${participant.Application.startNomer}`);
+  console.log(input);
+  
   const dispatch = useAppDispatch();
   const delApplPart = (): void => {
     dispatch(delPart({ id, applicationId: participant.Application.id }));
   };
+  const updPartInput = (): void => {
+    setIcon((prev) => !prev);
+  };
   const updApplPart = (): void => {
-    dispatch(updPart({ id, applicationId: participant.Application.id }));
+  console.log(input, 'uuuuuupdpd');
+    setIcon((prev) => !prev);
+    dispatch(updPart({ id, applicationId: Number(participant.Application.id), input }));
   };
 
   return (
@@ -30,7 +38,19 @@ function ParticipantCard({
         <button className="icon-del-part" type="submit" onClick={delApplPart} />
       </td>
       <td>
-        <button className="icon-upd-part" type="submit" onClick={updApplPart} />
+        {icon ? (
+          <button
+            className="icon-upd-part"
+            type="submit"
+            onClick={updPartInput}
+          />
+        ) : (
+          <button
+            className="icon-upd-part-save"
+            type="submit"
+            onClick={updApplPart}
+          />
+        )}
       </td>
       <td>{participant.Application.familiya}</td>
       <td>{participant.Application.name}</td>
@@ -53,9 +73,13 @@ function ParticipantCard({
       <td>{participant.Application.nestandartnyVpusk}</td>
       <td>{participant.Application.izmKuzova}</td>
       <td>{participant.Application.groupListId}</td>
-      <td>{participant.Application.startNomer}</td>
+      <td>{participant.Application.teamId}</td>
       <td>{participant.Application.ispolzovanieAutoDrugimi}</td>
-      <td>{participant.Application.startNomer}</td>
+      {icon ? (
+        <td>{participant.Application.startNomer}</td>
+      ) : (
+        <input value={input} onChange={(e) => setInput(e.target.value)} />
+      )}
     </tr>
   );
 }

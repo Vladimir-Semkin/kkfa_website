@@ -133,17 +133,34 @@ router.delete('/race/:id/application/:aplId/delete', async (req, res) => {
 router.put('/api/lk/race/:idRace/participant/:idAppl', async (req, res) => {
   try {
     const { idAppl } = req.params;
-    const { title, date, photo, description } = req.body;
-    if (title || date) {
-      const race = await RaceEvent.findOne({ where: Number(id) });
-      console.log(race, 'back');
-      race.title = title;
-      race.date = date;
-      race.photo = photo;
-      race.description = description;
-      race.save();
-      res.status(201).json(race);
-    }
+    const { id, applicationId, input } = req.body;
+    console.log(input);
+    const participant = await Participant.findOne({
+      where: { applicationId: Number(idAppl) },
+    });
+    participant.startNomer = Number(input);
+    participant.save();
+    res.status(201).json(participant);
+  } catch ({ message }) {
+    res.status(500).json({ message });
+  }
+});
+router.post('lk/race/:id/results', async (req, res) => {
+  try {
+    const { startNomer, attempt, time } = req.body;
+    const thisApplication = await Participant.findOne({
+      where: { startNomer: Number(startNomer), raceEventId: Number(id) },
+      raw: true,
+    });
+    const participant = await thisApplication.map(async (apl) => {
+      await Result.create({
+        applicationId: apl.id,
+        raceEventId: apl.raceEventId,
+        groupListId: apl.groupListId,
+        startNomer: apl.groupListId,
+      });
+    });
+    res.status(201).json(participant);
   } catch ({ message }) {
     res.status(500).json({ message });
   }

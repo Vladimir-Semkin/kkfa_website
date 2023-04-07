@@ -6,10 +6,10 @@
   border: 0ch;
 }
 .icon-del {
-  background: url(../../../public/icons/icons8-проверено-48.png) no-repeat top
+  background: url(../../../public/icons/icons8-ок-16.png) no-repeat top
     right;
   background-size: 100%;
-  padding: 18px 18px;
+  padding: 12px 12px;
   border: 0ch;
 }
 .icon-del-part {
@@ -22,6 +22,13 @@
 .icon-upd-part {
   background: url(../../../public/icons/icons8-редактировать-24.png)
     no-repeat top right;
+  background-size: 100%;
+  padding: 12px 12px;
+  border: 0ch;
+}
+.icon-upd-part-save {
+  background: url(../../../public/icons/icons8-ок-16.png) no-repeat top
+    right;
   background-size: 100%;
   padding: 12px 12px;
   border: 0ch;

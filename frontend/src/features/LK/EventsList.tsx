@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../store';
 import { initRace } from './lkSlice';
 import EventCard from './EventCard';
+import './EventStyle.css';
 
 function EventsList(): JSX.Element {
   const { racesArr } = useSelector((store: RootState) => store.lk);
@@ -11,18 +12,20 @@ function EventsList(): JSX.Element {
     dispatch(initRace());
   }, []);
   return (
-    <div>
-      <table>
+    <table className="table">
+      <thead>
         <tr>
           <th>Название</th>
           <th>Дата</th>
-          <th>Что-то</th>
+          <th>Фотография</th>
+          <th />
+          <th />
         </tr>
-        {racesArr.map((race) => (
-          <EventCard race={race} key={race.id} />
-        ))}
-      </table>
-    </div>
+      </thead>
+      {racesArr.map((race) => (
+        <EventCard race={race} key={race.id} />
+      ))}
+    </table>
   );
 }
 
