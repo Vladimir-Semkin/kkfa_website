@@ -50,9 +50,9 @@ function EventParams(): JSX.Element {
           <div onClick={() => navigate(`/lk/race/${id}/participant`)}>
             Участники
           </div>
-          {/* <div onClick={() => navigate(`/lk/race/${id}/results`)}>
+          <div onClick={() => navigate(`/lk/race/${id}/results`)}>
             Результаты
-          </div> */}
+          </div>
           <div className="decor">
             <div className="form-left-decoration" />
             <div className="form-right-decoration" />

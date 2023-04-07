@@ -38,7 +38,7 @@ function RaceParams(): JSX.Element {
       {racesArrId &&
         racesArrId?.map((el) => (
           <div>
-            <div>{el.title}</div>
+            <div >{el.title}</div>
             <div>{el.date}</div>
             <div>
               <a

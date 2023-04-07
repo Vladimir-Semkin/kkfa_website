@@ -3,7 +3,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import type {} from 'redux-thunk/extend-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import style from './RegistrationForm.module.css';
 import { Application } from './types/types';
 import { addApplication } from './applicationSlice';
@@ -11,6 +11,7 @@ import { addApplication } from './applicationSlice';
 export default function RegistrationForm(): JSX.Element {
   const dispatch = useDispatch();
   const { id } = useParams();
+  const navigate = useNavigate();
   const {
     register,
     formState: { errors },
@@ -23,7 +24,7 @@ export default function RegistrationForm(): JSX.Element {
   });
 
   return (
-    <div className={style.formContainer} >
+    <div className={style.formContainer}>
       <form className={style.form} onSubmit={onSubmit}>
         <div>
           <p>Имя:</p>
@@ -474,6 +475,7 @@ export default function RegistrationForm(): JSX.Element {
           <input
             className={style.btn}
             type="submit" /* disabled={!isValid} */
+            onClick={() => navigate('/')}
           />
         </div>
       </form>

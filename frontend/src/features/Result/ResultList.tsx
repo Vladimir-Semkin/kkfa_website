@@ -11,7 +11,7 @@ function ResultList({ id }: { id: IdRace }): JSX.Element {
   const { resultsArr } = useSelector((store: RootState) => store.result);
   // const { id } = useParams();
   const resultsArrId = resultsArr.filter(
-    (resultObj) => resultObj['Participants.raceEventId'] === Number(id)
+    (resultObj) => resultObj['Participants.raceEventId'] === Number(id),
   );
 
   const dispatch = useAppDispatch();
