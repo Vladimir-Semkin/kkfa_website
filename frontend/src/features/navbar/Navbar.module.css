@@ -1,10 +1,4 @@
 
-/* .link:hover {
-  color: rgb(189, 251, 64);
-  padding-bottom: 22px;
-  border-bottom: 3px solid;
-} */
-
 .navBar {
   position: relative;
   max-width: 100vw;
@@ -13,7 +7,6 @@
   /* opacity: 0.3; */
   
 }
-
 .link {
   /* display: flex; */
   /* flex-direction: column; */

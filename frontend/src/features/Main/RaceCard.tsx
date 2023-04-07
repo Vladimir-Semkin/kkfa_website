@@ -14,7 +14,7 @@ function RaceCard({ race }: { race: Race }): JSX.Element {
   return (
     <>
     
-    <Card sx={{ maxWidth: 345 }} className="raceCard">
+    <Card sx={{ width: 200 }} className="raceCard">
       <CardActionArea>
         <CardMedia
           component="img"

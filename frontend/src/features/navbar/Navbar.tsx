@@ -58,6 +58,7 @@ function NavBar(): JSX.Element {
               </Link>
             </div>
             {/* <div>
+
                 <Link
                   className={style.link}
                   to="/"
