@@ -13,20 +13,15 @@ function RaceList(): JSX.Element {
   const racesArrFilter = racesArr.filter(
     (el) =>
       Number(el.date.replace(/[\s.-]/g, '')) >
-      Number(dateForTimerToDay.replace(/[\s.-]/g, ''))
+      Number(dateForTimerToDay.replace(/[\s.-]/g, '')),
   );
-  console.log(racesArrFilter);
+
   return (
     <div>
       <div className="container">
         <div className="divCalendarCard">Предстоящие события:</div>
         {racesArrFilter.length > 0
-          ? racesArrFilter.map((race) => (
-              <RaceCard
-                race={race}
-                key={race.id}
-              />
-            ))
+          ? racesArrFilter.map((race) => <RaceCard race={race} key={race.id} />)
           : null}
       </div>
     </div>

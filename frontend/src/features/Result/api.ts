@@ -6,7 +6,7 @@ export const initResult = async (): Promise<Result[]> => {
 };
 
 export const addResult = async (obj: Result): Promise<Result> => {
-  const res = await fetch('lk/race/:id/results', {
+  const res = await fetch(`/api/lk/race/${obj.id}/results`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(obj),

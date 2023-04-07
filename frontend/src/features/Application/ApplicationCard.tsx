@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // import { useParams } from 'react-router-dom';
-import { useAppDispatch } from '../../store';
+import { useSelector } from 'react-redux';
+import { RootState, useAppDispatch } from '../../store';
 import { Application } from '../RegApplication/types/types';
 import { addAppInPart, delPart } from '../Participant/partSlice';
 import './Application.css';
@@ -16,10 +17,23 @@ function ApplicationCard({
 }): JSX.Element {
   const [icon, setIcon] = useState(true);
   const dispatch = useAppDispatch();
+  const { participantsArr } = useSelector(
+    (store: RootState) => store.participant,
+  );
   const pushApplPart = (): void => {
     setIcon((prev) => !prev);
     dispatch(addAppInPart({ id, applicationId: application.id }));
   };
+  // function greeen(): boolean {
+  //   const greenIcon = participantsArr.filter(
+  //     (participant) => participant.id === application.id,
+  //   );
+  //   if (greenIcon.length > 0) {
+  //     setIcon(true);
+  //     return icon;
+  //   }
+  // }
+
   const delApplPart = (): void => {
     setIcon((prev) => !prev);
     dispatch(delPart({ id, applicationId: application.id }));
@@ -27,6 +41,7 @@ function ApplicationCard({
   const delApplication = (): void => {
     dispatch(delAppl({ id, applicationId: application.id }));
   };
+  // useEffect(() => {}, greeen);
   return (
     <tr>
       <td>
@@ -37,7 +52,11 @@ function ApplicationCard({
         )}
       </td>
       <td>
-          <button className="icon-del-part" type="submit" onClick={delApplication} />
+        <button
+          className="icon-del-part"
+          type="submit"
+          onClick={delApplication}
+        />
       </td>
       <td>{application.familiya}</td>
       <td>{application.name}</td>

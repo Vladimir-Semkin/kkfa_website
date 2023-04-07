@@ -52,14 +52,18 @@ function EventParams(): JSX.Element {
             Заявки
           </button>
           <button
+          className={style.btn}
             type="button"
             onClick={() => navigate(`/lk/race/${id}/participant`)}
           >
             Участники
+
           </button>
-          {/* <div onClick={() => navigate(`/lk/race/${id}/results`)}>
+
+          
+          <button className={style.btn} onClick={() => navigate(`/lk/race/${id}/results`)}>
             Результаты
-          </div> */}
+          </button>
           <div className="decor">
             <div className="form-left-decoration" />
             <div className="form-right-decoration" />

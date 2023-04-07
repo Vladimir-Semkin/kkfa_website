@@ -50,7 +50,7 @@ function ParticipantList(): JSX.Element {
         {approvedPartArr.length > 0
           ? approvedPartArr.map((participant) => (
               <ParticipantCard
-                key={participant.Application.id}
+                // key={participant.Application.id}
                 participant={participant}
                 id={Number(id)}
               />

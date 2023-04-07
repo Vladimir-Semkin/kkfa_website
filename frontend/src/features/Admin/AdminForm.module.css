@@ -11,10 +11,12 @@
 input {
   margin-top: 0;
   margin-bottom: 20px;
+  border-radius: 5px;
+  size: 15px;
 }
 
 form p {
-  font-size: 12px;
-  text-align:start;
+  font-size: 20px;
+  text-align: start;
   margin-bottom: 3px;
 }
