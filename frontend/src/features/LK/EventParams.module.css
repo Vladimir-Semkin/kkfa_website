@@ -1,11 +1,20 @@
-.hidden {
-  /* opacity: 0;
-  height: 0;
-  width: 0;
-  line-height: 0;
-  overflow: hidden;
-  padding: 0;
-  margin: 0; */
+.hidden::-webkit-file-upload-button {
+visibility: hidden;
+}
+
+.hidden::before {
+  content: 'Добавить фотографии в галерею';
+  display: inline-block;
+  background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  /* -webkit-user-select: none; */
+  cursor: copy;
+  text-shadow: 0.1px 1px #444;
+  /* -webkit-animation: alternate; */
 }
 
 

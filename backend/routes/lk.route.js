@@ -21,6 +21,7 @@ router.post('/', async (req, res) => {
         date,
         photo,
         description,
+        link,
       });
       res.status(201).json(race);
     }
@@ -44,7 +45,7 @@ router.delete('/:id', async (req, res) => {
 router.put('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const { title, date, photo, description } = req.body;
+    const { title, date, photo, description, link } = req.body;
     if (title || date) {
       const race = await RaceEvent.findOne({ where: Number(id) });
       console.log(race, 'back');
@@ -52,6 +53,8 @@ router.put('/:id', async (req, res) => {
       race.date = date;
       race.photo = photo;
       race.description = description;
+      race.link = link;
+
       race.save();
       res.status(201).json(race);
     }
