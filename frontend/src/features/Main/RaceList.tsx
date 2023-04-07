@@ -15,7 +15,7 @@ function RaceList(): JSX.Element {
       Number(el.date.replace(/[\s.-]/g, '')) >
       Number(dateForTimerToDay.replace(/[\s.-]/g, ''))
   );
-  console.log(racesArrFilter);
+
   return (
     <div>
       <div className="container">

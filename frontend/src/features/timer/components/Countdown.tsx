@@ -10,7 +10,6 @@ import { initRace } from '../../Calendar/raceSlice';
 import CountdownBox from './CountdownBox';
 
 const Countdown = (): JSX.Element => {
-  
   const { racesArr, error } = useSelector((store: RootState) => store.race);
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -118,13 +117,15 @@ const Countdown = (): JSX.Element => {
   const dateArrMinusOne =
     arr.findIndex((dateForTimerToDay) => dateForTimerToDay === dateForTimer) -
     1;
-  //   {!error && console.log(racesArr[dateArrMinusOne].id)}
-  //  const urlIndex = racesArr[dateArrMinusOne]
-  //  console.log(error)
+
+  const urlIndex = racesArr[dateArrMinusOne]?.id;
+
   return (
     <>
       {dateForTimerToDay === arr[dateArrMinusOne] ? (
-        <button onClick={() => navigate('http://localhost:3000/race/')}>
+        <button
+          onClick={() => navigate(`http://localhost:3000/race/${urlIndex}`)}
+        >
           кнопка
         </button>
       ) : (
