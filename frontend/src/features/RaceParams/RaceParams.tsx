@@ -40,16 +40,19 @@ function RaceParams(): JSX.Element {
           <div>
             <div >{el.title}</div>
             <div>{el.date}</div>
-            <div>
-              <a
-                className={style.link}
-                href={el.link}
-                rel="noreferrer"
-                target="_blank"
-              >
-                Посмотреть галерею фотографий на яндекс диске
-              </a>
-            </div>
+            {el.link && (
+              <div>
+                <a
+                  className={style.link}
+                  href={el.link}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Посмотреть галерею фотографий на яндекс диске
+                </a>
+              </div>
+            )}
+
           </div>
         ))}
       {racesArrId && <Photos racesArrId={racesArrId[0].GroupPhotos} />}

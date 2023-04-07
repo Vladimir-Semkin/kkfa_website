@@ -26,6 +26,7 @@ p {
 .formContainer{
   display: flex;
   flex-wrap: wrap;
+  padding-top: 80px;
 }
 
 .wind {
